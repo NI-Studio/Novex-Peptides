@@ -30,19 +30,78 @@ h1{font-size:clamp(34px,5.5vw,72px)}h2{font-size:clamp(26px,3.8vw,44px)}h3{font-
 .btn:hover{background:#245a82}
 .btn.line{background:none;border:1px solid currentColor;color:inherit}
 
-/* Header & Logo Tengah */
+/* Header & Navigasi Responsif */
 .top{background:var(--green);color:#E3EFF8;font-size:12px;text-align:center;padding:7px 12px;letter-spacing:.03em}
-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.03);margin:0}
-.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px;gap:20px}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.03);margin:0}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px;gap:20px;position:relative}
+
+/* Navigasi Desktop */
 nav.dnav{display:flex;gap:24px;font-size:13px;font-weight:500}
 nav.dnav a{padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
 nav.dnav a.on,nav.dnav a:hover{border-color:var(--gold);color:var(--green)}
-.logo{text-align:center;font-family:var(--serif);font-size:32px;font-weight:600;line-height:1;letter-spacing:.06em}
+
+.logo{text-align:center;font-family:var(--serif);font-size:32px;font-weight:600;line-height:1;letter-spacing:.06em;color:var(--ink)}
 .logo small{display:block;font:500 9px var(--sans);letter-spacing:.38em;margin-top:5px;color:var(--gold)}
 .rt{display:flex;align-items:center;justify-content:flex-end;gap:20px}
-.tools{display:flex;align-items:center;gap:14px}
-.burger{display:none;background:none;font-size:13px;border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+.tools{display:flex;align-items:center;gap:12px}
+
+/* Butang 3 Garis (Hamburger Menu) Moden */
+.burger-btn{
+  display:none;
+  background:none;
+  border:1px solid var(--line);
+  padding:7px;
+  border-radius:10px;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  color:var(--ink);
+  transition:all .2s ease;
+}
+.burger-btn:hover{background:var(--bg2);border-color:var(--gold)}
+.burger-btn svg{display:block}
+.burger-btn.open .icon-open{display:none}
+.burger-btn.open .icon-close{display:block !important}
+
+/* Menu Dropdown Mobile */
 .mnav{display:none}
+.mnav.open{
+  display:flex;
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  background:rgba(255,255,255,.99);
+  backdrop-filter:blur(10px);
+  flex-direction:column;
+  gap:0;
+  padding:12px 24px 24px;
+  border-bottom:1px solid var(--line);
+  box-shadow:0 16px 32px rgba(14,40,66,.12);
+  z-index:99;
+}
+.mnav a{
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
+  font-weight:500;
+  color:var(--ink);
+  transition:color .2s ease;
+}
+.mnav a:hover, .mnav a.on{color:var(--green);font-weight:600}
+.mnav-shop-btn{
+  margin-top:16px;
+  width:100%;
+  display:block;
+  text-align:center;
+  padding:13px 20px;
+  font-size:14px;
+  font-weight:600;
+  border-radius:999px;
+  background:var(--green);
+  color:#fff !important;
+  border-bottom:none !important;
+}
 
 /* Modern Cart SVG Trigger */
 .cart-trigger-btn{position:relative;background:none;border:0;color:var(--green);padding:6px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease}
@@ -59,7 +118,7 @@ nav.dnav a.on,nav.dnav a:hover{border-color:var(--gold);color:var(--green)}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:#fff;padding:12px 24px;border-radius:999px;font-size:13px;font-weight:500;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
-/* Hero Section Asal */
+/* Hero Section */
 .hero{position:relative;height:calc(100vh - var(--off, 110px));height:calc(100svh - var(--off, 110px));min-height:520px;overflow:hidden;color:#fff;display:flex;align-items:center}
 .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(1.08) brightness(1.05)}
 .hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,40,66,.72),rgba(14,40,66,.18) 75%)}
@@ -69,7 +128,7 @@ nav.dnav a.on,nav.dnav a:hover{border-color:var(--gold);color:var(--green)}
 .hero .btn{background:#FFFFFF;color:var(--green)}
 .hero .btn.line{background:none;color:#fff;margin-left:10px}
 
-/* Hero Slider Asal */
+/* Hero Slider */
 .hero.sl:before{display:none}
 .slide{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1.1s ease-in-out;display:flex;align-items:center;overflow:hidden}
 .slide.on{opacity:1;z-index:1}
@@ -308,8 +367,18 @@ nav.dnav a.on,nav.dnav a:hover{border-color:var(--gold);color:var(--green)}
 .detail-info{display:flex;flex-direction:column;gap:16px}
 .detail-badge{display:inline-block;background:var(--bg2);color:var(--green);padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.04em;align-self:flex-start}
 .detail-price{font-size:clamp(26px,3vw,34px);font-weight:700;color:var(--green);font-family:var(--serif)}
-.stock-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#1ebe5a;background:rgba(37,211,102,.12);padding:5px 12px;border-radius:999px;align-self:flex-start}
-.stock-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#1ebe5a}
+/* Lencana Stok tanpa Dot Bulat Hijau */
+.stock-badge{
+  display:inline-flex;
+  align-items:center;
+  font-size:13px;
+  font-weight:600;
+  color:#1ebe5a;
+  background:rgba(37,211,102,.12);
+  padding:5px 14px;
+  border-radius:999px;
+  align-self:flex-start;
+}
 .detail-desc{font-size:14px;line-height:1.7;color:#3A4D5E;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
 .qty-row{display:flex;align-items:center;gap:16px;margin-top:8px;flex-wrap:wrap}
 .qty-box{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:var(--card);overflow:hidden}
@@ -389,16 +458,15 @@ footer li{list-style:none;margin-bottom:6px}
 .social-link svg{flex-shrink:0}
 .copy{border-top:1px solid rgba(255,255,255,.2);margin-top:40px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;opacity:.85}
 
-/* Global Responsiveness */
+/* Global Responsiveness & Media Queries */
 @media(max-width:1080px){
- .bar{grid-template-columns:auto 1fr auto;height:68px;gap:12px}
- .burger{display:block}
- .dnav{display:none}
- .rt{gap:10px}
- .logo{font-size:25px}
- .tools .btn{padding:8px 16px;font-size:12px}
- .mnav.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 16px;border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.08);z-index:99}
- .mnav a{padding:12px 0;border-bottom:1px solid var(--line)}
+ .bar{display:flex;justify-content:space-between;align-items:center;height:68px}
+ nav.dnav{display:none !important}
+ .btn-shop-desktop{display:none !important}
+ .burger-btn{display:inline-flex}
+ .logo{text-align:left;font-size:24px}
+ .logo small{letter-spacing:.26em}
+ .rt{gap:12px}
 }
 @media(max-width:960px){
  .t-grid{grid-template-columns:1fr 1fr;gap:18px}
@@ -436,26 +504,52 @@ footer li{list-style:none;margin-bottom:6px}
 <body>
 <div class="top">Made in USA. High Purity. Research Graded. Cold chain shipping worldwide.</div>
 
-<header><div class="wrap bar">
- <button class="burger" onclick="document.getElementById('navM').classList.toggle('open')" aria-label="Menu">Menu</button>
- <nav class="dnav" id="navL"></nav>
- <a href="#home" class="logo">NOVEX<small>PEPTIDES</small></a>
- <div class="rt">
-  <nav class="dnav" id="navR"></nav>
-  <div class="tools">
-   <a class="btn" href="#products" style="padding:10px 20px;font-size:12px">Shop Now</a>
-   <button class="cart-trigger-btn" id="headerCartBtn" onclick="openCartDrawer()" aria-label="Shopping Cart">
-     <svg viewBox="0 0 24 24">
-       <circle cx="9" cy="21" r="1"></circle>
-       <circle cx="20" cy="21" r="1"></circle>
-       <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-     </svg>
-     <span class="cart-badge" id="cartCount">0</span>
-   </button>
+<header>
+  <div class="wrap bar">
+    <!-- Navigasi Kiri (Desktop) -->
+    <nav class="dnav" id="navL"></nav>
+    
+    <!-- Logo Teks (Tengah di Desktop, Kiri di Mobile) -->
+    <a href="#home" class="logo">NOVEX<small>PEPTIDES</small></a>
+    
+    <!-- Bahagian Kanan Header -->
+    <div class="rt">
+      <!-- Navigasi Kanan (Desktop) -->
+      <nav class="dnav" id="navR"></nav>
+      
+      <div class="tools">
+        <!-- Butang Shop Now (Hanya dipaparkan di desktop) -->
+        <a class="btn btn-shop-desktop" href="#products" style="padding:10px 20px;font-size:12px">Shop Now</a>
+        
+        <!-- Butang Troli (Kekal kelihatan di semua skrin) -->
+        <button class="cart-trigger-btn" id="headerCartBtn" onclick="openCartDrawer()" aria-label="Shopping Cart">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+
+        <!-- Butang 3 Garis (Hamburger Menu untuk Mobile & Tablet) -->
+        <button class="burger-btn" id="mobileBurgerBtn" onclick="toggleMobileNav()" aria-label="Toggle Menu">
+          <svg class="icon-open" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+          <svg class="icon-close" style="display:none" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
- </div>
- <nav class="mnav" id="navM"></nav>
-</div></header>
+
+  <!-- Menu Dropdown Mobile (Memuatkan Semua Pautan & Butang Shop Now) -->
+  <nav class="mnav" id="navM"></nav>
+</header>
 
 <main id="app"></main>
 
@@ -549,7 +643,12 @@ const WA = '601112085054';
 
 const u = (id, w=1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=85`;
 const I = {
-  hero: '1532187863486-abf9dbad1b69', lab1: '1579154204601-01588f351e67', lab2: '1576091160399-112ba8d25d1d', dna: '1559757148-5c350d0d3c56',
+  hero: '1532187863486-abf9dbad1b69', 
+  lab_room: '1581093458791-9f3c3900df4b', 
+  lab_equip: '1582719478250-c89cae4dc85b', 
+  lab1: '1579154204601-01588f351e67', 
+  lab2: '1576091160399-112ba8d25d1d', 
+  dna: '1559757148-5c350d0d3c56',
   serum: '1620916566398-39f1143ab7be', drop: '1612817288484-6f916006741a', serum2: '1608248543803-ba4f8c70ae0b', cream: '1571781926291-c477ebfd024b',
   skin: '1522335789203-aabd1fc54bc9', face: '1617897903246-719242758050', cos: '1596462502278-27bfdc403348', glow: '1598440947619-2c35fc9aa908',
   fit: '1571019613454-1cb2f99b2d8b', run: '1552674605-db6ffd4facb5', food: '1490645935967-10de6ba17061', age: '1544005313-94ddf0286df2',
@@ -584,7 +683,7 @@ const img = (k, w=1200, alt='') => `<img src="${getImgUrl(k, w)}" alt="${alt}" l
 
 const menu = ['Home', 'About', 'Products', 'Science', 'Resources', 'Contact'];
 
-// Data 6 Testimony Landscape (t1.webp hingga t6.webp)
+// Data 6 Testimony Landscape
 const T = [
   { img: 't1.webp', title: 'Weight Management & Vitality', sub: 'Achieve a leaner physique with consistent protocol adherence.' },
   { img: 't2.webp', title: 'Stamina & Daily Endurance', sub: 'Boost daily metabolic energy, focus and persistent recovery.' },
@@ -607,6 +706,22 @@ function closeTestimonyModal(){
   if(m) m.classList.remove('open');
 }
 
+// Kawalan Menu Mobile (3 Garis)
+function toggleMobileNav(){
+  const navM = document.getElementById('navM');
+  const btn = document.getElementById('mobileBurgerBtn');
+  if(!navM) return;
+  const isOpen = navM.classList.toggle('open');
+  if(btn) btn.classList.toggle('open', isOpen);
+}
+
+function closeMobileNav(){
+  const navM = document.getElementById('navM');
+  const btn = document.getElementById('mobileBurgerBtn');
+  if(navM) navM.classList.remove('open');
+  if(btn) btn.classList.remove('open');
+}
+
 // Senarai gambar produk tempatan yang guna nisbah asal (contain) dan bucu rounded
 const localProducts = [
   'reta1.webp', 'reta2.webp', 'reta3.webp', 'reta4.webp', 'reta5.webp',
@@ -617,7 +732,6 @@ const localProducts = [
 
 const isContainImg = (src) => localProducts.includes(src) || (src && (src.endsWith('.webp') || src.endsWith('.png') || src.endsWith('.jpg')));
 
-// Fungsi untuk melaraskan kotak <img> tepat mengikut nisbah gambar supaya border-radius membulatkan keempat-empat bucu gambar
 function fitRoundedImg(el){
   if(!el || !el.naturalWidth || !el.naturalHeight) return;
   const r = el.naturalWidth / el.naturalHeight;
@@ -794,7 +908,7 @@ function renderCart(){
 
 function proceedToWhatsApp(){
   if(CART.length === 0){
-    alert('Sila tambah produk ke dalam troli terlebih dahulu.');
+    alert('Please add products to your cart first.');
     return;
   }
 
@@ -804,15 +918,15 @@ function proceedToWhatsApp(){
     const subtotal = item.val * item.qty;
     total += subtotal;
     const detail = item.size ? `(${item.size})` : `(${item.s})`;
-    itemsText += `${index + 1}. *${item.n}* ${detail}\n   • Kuantiti: ${item.qty} unit/vial\n   • Harga: RM${item.val.toFixed(2)} x ${item.qty} = RM${subtotal.toFixed(2)}\n\n`;
+    itemsText += `${index + 1}. *${item.n}* ${detail}\n   • Quantity: ${item.qty} unit/vial\n   • Price: RM${item.val.toFixed(2)} x ${item.qty} = RM${subtotal.toFixed(2)}\n\n`;
   });
 
   const message = 
-`Salam sejahtera Novex Peptides, saya ingin membuat tempahan bagi item berikut:
+`Hello Novex Peptides, I would like to place an order for the following items:
 
-${itemsText}*Jumlah Keseluruhan (Total): RM ${total.toFixed(2)}*
+${itemsText}*Total Order: RM ${total.toFixed(2)}*
 
-Sila sahkan ketersediaan stok & maklumat pembayaran / penghantaran. Terima kasih!`;
+Please confirm stock availability and payment / shipping details. Thank you!`;
 
   const url = `https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
@@ -914,9 +1028,9 @@ const card = p => {
 
 // 4 Slaid Hero Homepage
 const S = [
-  { k: 's9', h: 'Precision in<br>Every Molecule', p: 'Advanced peptide research. Science drives results, with premium quality made in USA.' },
-  { k: 'glow', h: 'Fuel a Higher<br>Standard', p: 'Science Driven Performance & Maximum Bioavailability.' },
-  { k: 'face', h: 'Radiant Skin<br>From Within', p: 'Advanced Peptide Skincare and Cellular Rejuvenation.' },
+  { k: 'hero', h: 'Precision in<br>Every Molecule', p: 'Advanced peptide research. Science drives results, with premium quality made in USA.' },
+  { k: 'lab_room', h: 'Fuel a Higher<br>Standard', p: 'Science Driven Performance & Maximum Bioavailability.' },
+  { k: 'lab_equip', h: 'Radiant Skin<br>From Within', p: 'Advanced Peptide Skincare and Cellular Rejuvenation.' },
   { k: 'dna', h: 'Innovations for<br>Longevity & Health', p: 'Third-party tested research compounds delivered with cold chain integrity.' }
 ];
 
@@ -1350,11 +1464,14 @@ function route(){
   startProdAutoSlide();
   initContainImages();
 
-  const lk = a => a.map(m => `<a href="#${m.toLowerCase()}" class="${m.toLowerCase()===k?'on':''}">${m}</a>`).join('');
+  const lk = (a, isMobile=false) => a.map(m => `<a href="#${m.toLowerCase()}" class="${m.toLowerCase()===k?'on':''}" ${isMobile?'onclick="closeMobileNav()"':''}>${m}</a>`).join('');
   document.getElementById('navL').innerHTML = lk(menu.slice(0, 4));
   document.getElementById('navR').innerHTML = lk(menu.slice(4));
-  document.getElementById('navM').innerHTML = lk(menu);
-  document.getElementById('navM').classList.remove('open');
+  
+  // Masukkan semua senarai pautan dan butang Shop Now ke dalam menu 3 garis
+  document.getElementById('navM').innerHTML = lk(menu, true) + `<a class="btn mnav-shop-btn" href="#products" onclick="closeMobileNav()">Shop Now</a>`;
+  closeMobileNav();
+
   window.scrollTo(0, 0);
 
   const f = document.getElementById('flt'), q = document.getElementById('q');
