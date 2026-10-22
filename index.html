@@ -2,518 +2,1398 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Novex Peptides | Precision in Every Molecule</title>
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FFFFFF;--bg2:#E9F2FA;--ink:#1E2D3B;--mut:#5A6F82;--green:#2F6F9F;--line:#D2E2EF;--card:#F6FAFD;--gold:#3F84B5;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+:root{
+  --bg:#FFFFFF;--bg2:#E9F2FA;--ink:#1E2D3B;--mut:#5A6F82;--green:#2F6F9F;
+  --line:#D2E2EF;--card:#F6FAFD;--gold:#3F84B5;--red:#e11d48;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font:15px/1.65 var(--sans);overflow-x:hidden}
 img{display:block;width:100%;height:100%;object-fit:cover;background:var(--bg2)}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0}
 :focus-visible{outline:2px solid var(--green);outline-offset:2px}
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
-h1{font-size:clamp(34px,5.5vw,72px)}h2{font-size:clamp(28px,3.8vw,46px)}h3{font-size:24px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15}
+h1{font-size:clamp(34px,5.5vw,72px)}h2{font-size:clamp(26px,3.8vw,44px)}h3{font-size:clamp(20px,2.5vw,26px)}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .sec{padding:80px 0}
 .alt{background:var(--bg2)}
-.btn{display:inline-block;background:var(--green);color:#fff;padding:12px 26px;font-size:13px;letter-spacing:.04em;transition:background .2s;text-align:center}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:12px 26px;font-size:13px;letter-spacing:.04em;transition:all .2s ease;text-align:center;border-radius:999px;touch-action:manipulation}
 .btn:hover{background:#245a82}
 .btn.line{background:none;border:1px solid currentColor;color:inherit}
 
-/* Header Normal (Edge-to-Edge) */
+/* Header & Logo Tengah */
 .top{background:var(--green);color:#E3EFF8;font-size:12px;text-align:center;padding:7px 12px;letter-spacing:.03em}
-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.03);margin:0;border-radius:0}
-.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px;gap:32px}
-nav{display:flex;gap:28px;font-size:13px;font-weight:500}
-nav a{padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
-nav a.on,nav a:hover{border-color:var(--gold);color:var(--green)}
-.rt{display:flex;align-items:center;justify-content:flex-end;gap:28px}
-.tools{display:flex;align-items:center}
-.tools .btn{padding:10px 20px}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.03);margin:0}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px;gap:20px}
+nav.dnav{display:flex;gap:24px;font-size:13px;font-weight:500}
+nav.dnav a{padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+nav.dnav a.on,nav.dnav a:hover{border-color:var(--gold);color:var(--green)}
 .logo{text-align:center;font-family:var(--serif);font-size:32px;font-weight:600;line-height:1;letter-spacing:.06em}
 .logo small{display:block;font:500 9px var(--sans);letter-spacing:.38em;margin-top:5px;color:var(--gold)}
-.burger{display:none;background:none;font-size:13px;border:1px solid var(--line);padding:7px 14px}
+.rt{display:flex;align-items:center;justify-content:flex-end;gap:20px}
+.tools{display:flex;align-items:center;gap:14px}
+.burger{display:none;background:none;font-size:13px;border:1px solid var(--line);padding:7px 14px;border-radius:999px}
 .mnav{display:none}
 
-/* Hero Section (Fit First View of Screen, Full Width, No Rounded Corners) */
-.hero{position:relative;height:calc(100vh - var(--off, 110px));height:calc(100svh - var(--off, 110px));min-height:500px;overflow:hidden;color:#fff;display:flex;align-items:center;border-radius:0;clip-path:none;-webkit-clip-path:none}
-.hero>img{position:absolute;inset:0;filter:saturate(1.08) brightness(1.1)}
-.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,40,66,.65),rgba(14,40,66,.12) 75%)}
-.hero:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(55% 70% at 88% -5%,rgba(255,255,255,.75),transparent 62%),radial-gradient(35% 45% at 8% 105%,rgba(150,205,245,.5),transparent 70%)}
+/* Modern Cart SVG Trigger */
+.cart-trigger-btn{position:relative;background:none;border:0;color:var(--green);padding:6px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease}
+.cart-trigger-btn:hover{transform:scale(1.12)}
+.cart-trigger-btn svg{width:25px;height:25px;stroke:var(--green);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cart-badge{position:absolute;top:-2px;right:-5px;background:var(--red);color:#fff;border-radius:999px;font-size:10px;min-width:18px;height:18px;line-height:18px;text-align:center;font-weight:700;padding:0 4px;border:2px solid #fff}
+.cart-bump{animation:cartPop .35s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes cartPop{0%{transform:scale(1)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
+
+/* Animasi Terbang ke Troli */
+.flying-img{position:fixed;z-index:99999;pointer-events:none;object-fit:cover;box-shadow:0 14px 32px rgba(47,111,159,.4);will-change:transform,top,left,width,height,opacity}
+
+/* Toast Notifikasi */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:#fff;padding:12px 24px;border-radius:999px;font-size:13px;font-weight:500;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* Hero Section Asal */
+.hero{position:relative;height:calc(100vh - var(--off, 110px));height:calc(100svh - var(--off, 110px));min-height:520px;overflow:hidden;color:#fff;display:flex;align-items:center}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(1.08) brightness(1.05)}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,40,66,.72),rgba(14,40,66,.18) 75%)}
 .hero .wrap{position:relative;z-index:2;width:100%}
-.hero .in{max-width:560px}
+.hero .in{max-width:580px}
 .hero p{max-width:480px;margin:18px 0 28px;font-size:16px;line-height:1.6;opacity:.92}
 .hero .btn{background:#FFFFFF;color:var(--green)}
 .hero .btn.line{background:none;color:#fff;margin-left:10px}
-.hero.rgt .in{margin-left:auto;text-align:right}.hero.rgt p{margin-left:auto}.hero.rgt .kick{justify-content:flex-end}
-.hero.ctr{text-align:center;justify-content:center}.hero.ctr .in{margin:auto;max-width:760px}.hero.ctr p{margin-inline:auto}.hero.ctr .kick{justify-content:center}
-.hero.bot{align-items:end;padding-bottom:54px}
-.hero.lt{color:var(--ink)}.hero.lt:before{background:linear-gradient(90deg,rgba(255,255,255,.94),rgba(255,255,255,.55) 48%,rgba(255,255,255,0) 82%)}
-.hero.lt .btn{background:var(--green);color:#fff}.hero.lt:after{mix-blend-mode:screen;opacity:.8}
-.kick{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;margin-bottom:16px}
-.kick:before{content:"";width:34px;height:1px;background:currentColor}.hero.ctr .kick:after{content:"";width:34px;height:1px;background:currentColor}
 
-/* Hero Slider */
+/* Hero Slider Asal */
 .hero.sl:before{display:none}
-.slide{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1.2s;display:flex;align-items:center;overflow:hidden}
+.slide{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1.1s ease-in-out;display:flex;align-items:center;overflow:hidden}
 .slide.on{opacity:1;z-index:1}
-.slide>img{position:absolute;inset:0}
-.slide:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,40,66,.82),rgba(14,40,66,.15) 75%)}
-.slide.on>img{animation:kb 9s ease-out forwards}
-@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.slide>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.slide:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,40,66,.82),rgba(14,40,66,.18) 75%)}
 .slide .wrap{width:100%}
+
 .ctl{position:absolute;z-index:3;bottom:28px;left:0;right:0}
 .ctl .wrap{display:flex;justify-content:space-between;align-items:center}
 .dots2{display:flex;gap:10px}
-.dot{width:34px;height:3px;background:rgba(255,255,255,.4);padding:0;border-radius:3px}
-.dot.on{background:#fff}
+.dot{width:34px;height:4px;background:rgba(255,255,255,.4);padding:0;border-radius:4px;cursor:pointer;transition:all .3s ease}
+.dot.on{background:#fff;width:44px}
 .arr{display:flex;gap:10px}
-.arr button{width:42px;height:42px;border-radius:50%;background:none;border:1px solid rgba(255,255,255,.6);color:#fff;font-size:18px}
+.arr button{width:42px;height:42px;border-radius:50%;background:rgba(14,40,66,.35);border:1px solid rgba(255,255,255,.6);color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(4px);transition:all .2s ease}
 .arr button:hover{background:#fff;color:var(--green)}
 
-/* Section Head Layout */
+/* Grids & Cards */
 .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:20px;flex-wrap:wrap}
 .head>div{display:flex;flex-direction:column;gap:8px;max-width:720px}
-.head h1,.head h2{margin:0}
-.head p{color:var(--mut);font-size:15px;line-height:1.6;margin-top:2px}
-
-/* Values & Marquee */
-.vals{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}
-.vals div{background:var(--card);padding:18px 12px;text-align:center;font-family:var(--serif);font-size:19px}
-.mq{overflow:hidden;border-block:1px solid var(--line);background:var(--card);white-space:nowrap;margin:34px 0}
-.mq div{display:inline-flex;gap:46px;padding:17px 0;animation:mq 34s linear infinite;font:italic 500 22px var(--serif)}
-.mq span:after{content:"✦";font-style:normal;font-size:11px;color:var(--gold);margin-left:46px}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-/* Grids & Cards */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.g6{display:grid;grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));gap:18px}
 .ph{aspect-ratio:4/5;overflow:hidden;border-radius:24px}
 .ph.w{aspect-ratio:16/10}
 .cat{position:relative;aspect-ratio:3/4;overflow:hidden;color:#fff;display:flex;align-items:end;border-radius:26px}
 .cat img{position:absolute;inset:0;transition:transform .6s}
 .cat:hover img{transform:scale(1.04)}
 .cat:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(10,32,56,.85),transparent 60%)}
-.cat div{position:relative;z-index:2;padding:22px}
-.cat p{font-size:13px;opacity:.9}
+.cat div{position:relative;z-index:2;padding:20px}
+.cat h3{font-size:20px}
+.cat p{font-size:12px;opacity:.9;margin-top:4px}
+
+/* Landscape Testimony Section */
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.t-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .25s ease;
+}
+.t-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 48px -20px rgba(47,111,159,.35);
+  border-color:var(--gold);
+}
+.t-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:3/2;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--bg2);
+  border:1px solid rgba(210,226,239,.6);
+  cursor:pointer;
+}
+.t-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:16px;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.t-card:hover .t-frame img{transform:scale(1.03)}
+.t-foot{
+  padding:2px 6px 6px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  flex:1;
+}
+.t-foot h3{font-size:21px;line-height:1.25;color:var(--ink)}
+.t-foot p{font-size:13px;color:var(--mut);line-height:1.55}
+
+/* Lightbox Modal untuk Gambar Testimony */
+.t-lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(10,24,40,.85);
+  backdrop-filter:blur(6px);
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.t-lightbox.open{display:flex}
+.t-lightbox-inner{
+  position:relative;
+  max-width:960px;
+  width:100%;
+  background:#fff;
+  border-radius:24px;
+  padding:14px;
+  box-shadow:0 25px 60px rgba(0,0,0,.4);
+}
+.t-lightbox-inner img{
+  width:100%;
+  height:auto;
+  max-height:80vh;
+  object-fit:contain;
+  border-radius:16px;
+  background:var(--ink);
+}
+.t-lightbox-close{
+  position:absolute;
+  top:-14px;
+  right:-14px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#fff;
+  color:var(--ink);
+  font-size:22px;
+  font-weight:600;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Bahagian 2 Banner */
 .div2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.div2 .cat{aspect-ratio:16/11}
 .camp{position:relative;min-height:420px;color:#fff;display:flex;align-items:center;border-radius:26px;overflow:hidden}
-.camp img{position:absolute;inset:0}
-.camp:before{content:"";position:absolute;inset:0;z-index:1;background:rgba(14,40,66,.55)}
+.camp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.camp:hover img{transform:scale(1.03)}
+.camp:before{content:"";position:absolute;inset:0;z-index:1;background:rgba(14,40,66,.52)}
 .camp div{position:relative;z-index:2;padding:40px}
-.camp p{margin:12px 0 22px;max-width:380px}
-.lite{background:radial-gradient(70% 90% at 85% 0,#fff,transparent 70%),linear-gradient(180deg,#F4F9FE,#D9EAF7)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px}
-.stats b{display:block;font:500 54px/1 var(--serif);color:var(--green)}.stats span{font-size:12px;color:var(--mut);letter-spacing:.06em}
+.camp h2{font-size:clamp(24px,3vw,36px);color:#fff;margin-bottom:6px}
+.camp p{margin:10px 0 22px;max-width:380px;font-size:14px;color:#E3EFF8;opacity:.95}
+
+.mq{overflow:hidden;border-block:1px solid var(--line);background:var(--card);white-space:nowrap;margin:34px 0}
+.mq div{display:inline-flex;gap:46px;padding:17px 0;animation:mq 34s linear infinite;font:italic 500 22px var(--serif)}
+.mq span:after{content:"✦";font-style:normal;font-size:11px;color:var(--gold);margin-left:46px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Sistem Slaid Gambar Produk & Bucu Melengkung (Rounded Shape) */
+.prod-slider{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:inherit;
+}
+.prod-slides{
+  position:relative;
+  width:100%;
+  height:100%;
+  border-radius:inherit;
+  overflow:hidden;
+}
+.prod-slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity .65s ease-in-out;
+  pointer-events:none;
+  border-radius:inherit;
+  overflow:hidden;
+}
+.prod-slide.active{opacity:1;pointer-events:auto}
+.prod-slide>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:inherit;
+  display:block;
+}
+/* Slaid untuk gambar saiz asal dengan bucu melengkung tepat pada imej */
+.prod-slide.contain-slide{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+.prod-slide.contain-slide>img{
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:16px !important;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(14,40,66,.06);
+  flex-shrink:0;
+}
+.ps-dots{position:absolute;bottom:10px;left:0;right:0;z-index:5;display:flex;justify-content:center;gap:6px}
+.ps-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.65);cursor:pointer;transition:all .3s ease;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.ps-dot.active{background:var(--green);transform:scale(1.25)}
+
+/* Kad Produk (Paparan Utama & Katalog) */
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;font-size:13px}
+.filter button{background:none;border:1px solid var(--line);padding:7px 16px;color:var(--ink);border-radius:999px}
+.filter button.on{background:var(--green);color:#fff;border-color:var(--green)}
+.pc{padding:14px;background:#fff;border:1px solid var(--line);border-radius:26px;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.pc:hover{transform:translateY(-6px);box-shadow:0 24px 44px -24px rgba(47,111,159,.5)}
+.pc .ph{
+  aspect-ratio:1;
+  border-radius:20px;
+  position:relative;
+  background:linear-gradient(160deg,#fff,#DCEBF7);
+  overflow:hidden;
+}
+.pc .chip{position:absolute;left:12px;top:12px;z-index:6;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);color:var(--green);font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px}
+.pc .b{text-align:left;align-items:stretch;padding:16px 8px 8px;gap:8px;display:flex;flex-direction:column;flex:1}
+.pc h3{font-size:20px;line-height:1.2}.pc .s{font-size:13px;color:var(--mut)}
+.pc .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}.pc .meta span{font-size:11px;background:var(--bg2);color:var(--ink);padding:4px 10px;border-radius:999px}
+.btn-details{background:var(--green);color:#fff;padding:12px;border-radius:999px;font-size:13px;font-weight:600;text-align:center;margin-top:10px;transition:background .2s}
+.btn-details:hover{background:#245a82}
+
+/* Product Details Page */
+.detail-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:start}
+.detail-img-wrap{
+  aspect-ratio:1;
+  max-width:580px;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:linear-gradient(160deg,#fff,#DCEBF7);
+  position:relative;
+}
+.detail-img-wrap .prod-slide.contain-slide{
+  padding:18px;
+}
+.detail-img-wrap .prod-slide.contain-slide>img{
+  border-radius:22px !important;
+}
+.detail-img-wrap .ps-dots{bottom:16px;gap:8px}
+.detail-img-wrap .ps-dot{width:9px;height:9px}
+.detail-info{display:flex;flex-direction:column;gap:16px}
+.detail-badge{display:inline-block;background:var(--bg2);color:var(--green);padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.04em;align-self:flex-start}
+.detail-price{font-size:clamp(26px,3vw,34px);font-weight:700;color:var(--green);font-family:var(--serif)}
+.stock-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#1ebe5a;background:rgba(37,211,102,.12);padding:5px 12px;border-radius:999px;align-self:flex-start}
+.stock-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#1ebe5a}
+.detail-desc{font-size:14px;line-height:1.7;color:#3A4D5E;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
+.qty-row{display:flex;align-items:center;gap:16px;margin-top:8px;flex-wrap:wrap}
+.qty-box{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:var(--card);overflow:hidden}
+.qty-box button{width:40px;height:40px;background:none;font-size:17px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.qty-box button:hover{background:var(--bg2)}
+.qty-box input{width:46px;text-align:center;border:0;background:none;font-weight:600;font-size:14px}
+.btn-add-cart{background:var(--green);color:#fff;padding:14px 28px;font-weight:600;font-size:14px;border-radius:999px;flex:1;min-width:160px;text-align:center;transition:background .2s,transform .1s}
+.btn-add-cart:active{transform:scale(0.98)}
+.btn-add-cart:hover{background:#245a82}
+
+/* Option / Size Selector & Modal */
+.size-picker{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.size-btn{border:1px solid var(--line);background:#fff;padding:8px 16px;font-size:13px;font-weight:600;border-radius:10px;cursor:pointer;transition:all .2s}
+.size-btn:hover{border-color:var(--green)}
+.size-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+.chart-link{font-size:12px;color:var(--gold);text-decoration:underline;cursor:pointer;font-weight:500;display:inline-block}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-content{background:#fff;border-radius:20px;max-width:540px;width:100%;padding:28px;position:relative;box-shadow:0 20px 40px rgba(0,0,0,.2);max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:16px;background:none;font-size:22px;color:var(--mut)}
+.table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0}
+.size-table{width:100%;border-collapse:collapse;font-size:13px;text-align:center;min-width:440px}
+.size-table th,.size-table td{border:1px solid var(--line);padding:10px 8px}
+.size-table th{background:var(--bg2);color:var(--green);font-weight:600}
+
+/* Cart Slide-in Drawer */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:none;backdrop-filter:blur(3px)}
+.cart-overlay.open{display:block}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:100%;max-width:460px;background:#fff;z-index:1000;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,.15)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-header{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.cart-items{padding:18px 22px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:14px}
+.cart-item{display:grid;grid-template-columns:60px 1fr auto auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px}
+.cart-item-img{aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--bg2)}
+.cart-del-btn{background:none;border:none;color:var(--red);padding:8px;cursor:pointer;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.cart-del-btn:hover{background:#ffe4e6;color:#be123c}
+.cart-footer{padding:20px 22px;border-top:1px solid var(--line);background:var(--card)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:16px}
+.cart-total-price{font-size:24px;font-weight:700;color:var(--green);font-family:var(--serif)}
+.btn-wa-proceed{width:100%;background:#25D366;color:#fff;padding:15px;border-radius:999px;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s}
+.btn-wa-proceed:hover{background:#1ebe5a}
+.btn-wa-proceed svg{width:20px;height:20px;fill:#fff}
+
+/* Steps, Rows & Contact */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .steps div{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px}
 .steps b{font:italic 500 46px/1 var(--serif);color:var(--gold)}.steps h3{margin:10px 0 8px;font-size:23px}.steps p{font-size:14px;color:var(--mut)}
 .rows>div{background:var(--card);border-radius:24px;padding:24px 28px;margin-bottom:12px;display:grid;grid-template-columns:80px 1fr 1.5fr;gap:24px;align-items:baseline}
 .rows b{font:italic 500 30px var(--serif);color:var(--gold)}.rows p{color:#3A4D5E}
-.tx{border-left:2px solid var(--gold);padding:4px 0 4px 22px;border-radius:0 18px 18px 0}.tx h3{margin-bottom:8px}.tx p{font-size:14px;color:#3A4D5E}
-.pull{font:italic 500 clamp(26px,3.6vw,44px)/1.25 var(--serif);max-width:900px;margin:auto;text-align:center}.pull small{display:block;font:600 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:22px}
 .gl{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .gl div{background:var(--card);border-radius:18px;padding:18px 20px}.gl b{font:500 21px var(--serif)}.gl p{font-size:13px;color:var(--mut)}
-.ft{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}
-.sk{background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 30px 60px -32px rgba(63,132,181,.4);border:1px solid var(--line)}
-.sk .ph{aspect-ratio:5/4;border-radius:0}.sk .b{padding:26px 28px 30px;display:flex;flex-direction:column;gap:10px}.sk p{color:#3A4D5E;font-size:14px}.sk h3{font-size:28px}
-
-/* Products Card */
-.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;font-size:13px}
-.filter button{background:none;border:1px solid var(--line);padding:7px 16px;color:var(--ink);border-radius:999px}
-.filter button.on{background:var(--green);color:#fff;border-color:var(--green)}
-.pc{padding:12px;background:#fff;border:1px solid var(--line);border-radius:26px;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
-.pc:hover{transform:translateY(-6px);box-shadow:0 24px 44px -24px rgba(47,111,159,.5)}
-.pc .ph{aspect-ratio:1;border-radius:20px;position:relative;background:linear-gradient(160deg,#fff,#DCEBF7);overflow:hidden}
-.pc .chip{position:absolute;left:12px;top:12px;z-index:2;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);color:var(--green);font-size:11px;font-weight:600;letter-spacing:.04em;padding:5px 12px;border-radius:999px}
-.pc .b{text-align:left;align-items:stretch;padding:16px 8px 8px;gap:8px;display:flex;flex-direction:column;flex:1}
-.pc h3{font-size:23px}.pc .s{font-size:13px;color:var(--mut)}
-.pc .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}.pc .meta span{font-size:11px;background:var(--bg2);color:var(--ink);padding:4px 10px;border-radius:999px}
-.wa{border-radius:999px;padding:12px;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;font-size:13px;font-weight:600;transition:background .2s}
-.wa:hover{background:#1ebe5a}
-.wa svg{width:18px;height:18px;fill:#fff}
-.sq{display:block;width:100%;max-width:360px;padding:11px 16px;border:1px solid var(--line);background:var(--card);font:inherit;margin-bottom:16px;border-radius:999px}
-.arch{max-width:440px;width:100%;margin:0 auto;border-radius:999px 999px 24px 24px}
-.ing{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.ing .card{flex-direction:row;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex}
-.ing .ph{width:42%;aspect-ratio:auto;flex:none;border-radius:0}
-.ing .b{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}
-.ing ul{list-style:none;font-size:13px;color:var(--mut)}
-.ing li{border-bottom:1px solid var(--line);padding:4px 0}
-.art .card{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:border-color .2s}
-.art .card:hover{border-color:var(--green)}
-.art .card .ph{aspect-ratio:16/10;border-radius:0}
-.art .card .b{padding:18px}
-.note{font-size:12px;color:var(--mut);border-top:1px solid var(--line);margin-top:28px;padding-top:14px}
-
-/* Contact Section (Tanpa Garisan Lurus Biru) */
+.pull{font:italic 500 clamp(24px,3.6vw,44px)/1.25 var(--serif);max-width:900px;margin:auto;text-align:center}.pull small{display:block;font:600 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:20px}
 .c-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:start}
 .c-wa-box{background:var(--ink);color:#fff;padding:32px;position:relative;overflow:hidden;border-radius:26px}
-.c-wa-box .c-kicker{color:#8CC2E8;margin-bottom:8px}
 .c-wa-box h3{font-size:28px;color:#fff;margin-bottom:10px}
 .c-wa-box p{font-size:14px;color:#C8DCEF;margin-bottom:22px;max-width:420px}
-.c-wa-box .wa{display:inline-flex;padding:12px 26px;margin-top:0}
 .c-specs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
 .c-spec{background:var(--card);border:1px solid var(--line);padding:20px;border-radius:22px}
 .c-spec small{display:block;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .c-spec h4{font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:6px;color:var(--ink)}
 .c-spec p{font-size:13px;color:var(--mut);line-height:1.5}
-.c-visual{margin-top:20px;display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:center;background:var(--bg2);border:1px solid var(--line);padding:16px;border-radius:22px}
-.c-visual .ph{aspect-ratio:4/5;border-radius:999px 999px 18px 18px}
-.c-visual h4{font-family:var(--serif);font-size:22px;margin-bottom:6px}
-.c-visual p{font-size:13px;color:var(--mut)}
-.c-form-wrap{background:var(--card);border:1px solid var(--line);padding:40px;position:relative;border-radius:26px;overflow:hidden}
-.c-form-wrap h2{font-size:34px;margin-bottom:8px}
-.c-form-wrap>p{color:var(--mut);font-size:14px;margin-bottom:24px}
+.c-form-wrap{background:var(--card);border:1px solid var(--line);padding:40px;position:relative;border-radius:26px}
 .form{display:grid;gap:18px}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .f-grp{display:flex;flex-direction:column;gap:6px}
 .f-grp label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-.form input,.form select,.form textarea{width:100%;padding:13px 14px;border:1px solid var(--line);background:#fff;font:inherit;color:var(--ink);border-radius:14px;transition:border-color .2s}
-.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--green)}
-.form button.btn{width:100%;padding:15px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-top:4px;border-radius:999px}
-.c-note{font-size:12px;color:var(--mut);text-align:center;margin-top:14px}
-.c-faq{margin-top:72px;padding-top:56px;border-top:1px solid var(--line)}
-.c-faq-card{background:var(--card);border:1px solid var(--line);padding:26px;border-radius:22px}
-.c-faq-card span{display:inline-block;font-family:var(--serif);font-size:18px;color:var(--gold);margin-bottom:8px}
-.c-faq-card h3{font-size:22px;margin-bottom:8px}
-.c-faq-card p{font-size:13px;color:var(--mut)}
-.c-kicker{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.form input,.form select,.form textarea{width:100%;padding:13px 14px;border:1px solid var(--line);background:#fff;font:inherit;color:var(--ink);border-radius:14px}
 
-/* Footer Penuh (Edge-to-Edge) */
-footer{background:var(--green);color:#E3EFF8;padding:60px 0 24px;font-size:13px;margin:0;border-radius:0}
-.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.4fr;gap:32px}
+/* Footer & Social Media Links */
+footer{background:var(--green);color:#E3EFF8;padding:60px 0 24px;font-size:13px}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1.3fr 1.2fr;gap:32px}
 footer h4{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:12px;color:#fff}
 footer li{list-style:none;margin-bottom:6px}
-footer a:hover{text-decoration:underline}
-.nl{display:flex;margin-top:10px;gap:8px}
-.nl input{flex:1;padding:11px 18px;border:0;font:inherit;min-width:0;border-radius:999px}
-.nl button{background:#FFFFFF;color:var(--green);padding:0 22px;border-radius:999px}
+.social-links{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.social-link{display:inline-flex;align-items:center;gap:10px;color:#E3EFF8;font-size:13px;font-weight:500;transition:all .2s ease;padding:7px 14px;background:rgba(255,255,255,.09);border-radius:12px;width:fit-content}
+.social-link:hover{background:rgba(255,255,255,.2);color:#fff;transform:translateY(-2px)}
+.social-link svg{flex-shrink:0}
 .copy{border-top:1px solid rgba(255,255,255,.2);margin-top:40px;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;opacity:.85}
 
 /* Global Responsiveness */
-.btn,.burger,.filter button{border-radius:999px}
 @media(max-width:1080px){
  .bar{grid-template-columns:auto 1fr auto;height:68px;gap:12px}
  .burger{display:block}
  .dnav{display:none}
- .rt{gap:0}
- .tools{border:0;padding:0}
- .logo{font-size:26px}
+ .rt{gap:10px}
+ .logo{font-size:25px}
+ .tools .btn{padding:8px 16px;font-size:12px}
  .mnav.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 16px;border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.08);z-index:99}
  .mnav a{padding:12px 0;border-bottom:1px solid var(--line)}
 }
+@media(max-width:960px){
+ .t-grid{grid-template-columns:1fr 1fr;gap:18px}
+}
 @media(max-width:900px){
- .g2,.div2,.ing,.fg,.c-grid,.ft{grid-template-columns:1fr}
- .g3,.g4,.stats,.steps{grid-template-columns:1fr 1fr}
- .vals{grid-template-columns:repeat(2,1fr)}
- .sec{padding:56px 0}
- .c-form-wrap{padding:28px 22px}
+ .g2,.div2,.fg,.detail-grid,.c-grid{grid-template-columns:1fr}
+ .g3,.g4,.steps{grid-template-columns:1fr 1fr}
+ .sec{padding:54px 0}
  .rows>div{grid-template-columns:50px 1fr}
  .rows p{grid-column:2}
- .hero.rgt .in{text-align:left;margin:0}.hero.rgt p{margin-left:0}.hero.rgt .kick{justify-content:flex-start}
- .hero.lt:before{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.35))}
+ .detail-img-wrap{max-width:480px;margin:0 auto;width:100%}
+ .ctl{bottom:18px}
+ .dot{width:26px;height:3px}
+ .dot.on{width:36px}
+ .arr button{width:36px;height:36px;font-size:15px}
 }
 @media(max-width:600px){
- .g3,.g4,.c-specs,.f-row,.c-visual,.steps,.gl{grid-template-columns:1fr}
- .c-visual .ph{max-width:140px}
- .ing .card{flex-direction:column}
- .ing .ph{width:100%;aspect-ratio:16/10}
- .hero{min-height:460px}
- .hero .btn.line{margin:10px 0 0}
- .hero.bot{padding-bottom:40px}
+ .wrap{padding:0 18px}
+ .hero{min-height:480px}
+ .hero .in{max-width:100%}
+ .hero .btn.line{margin:10px 0 0;display:inline-block}
+ .g3,.g4,.steps,.f-row,.c-specs,.gl,.t-grid{grid-template-columns:1fr}
+ .g6{grid-template-columns:repeat(2,1fr);gap:12px}
+ .camp{min-height:360px}
+ .camp div{padding:28px 22px}
+ .c-form-wrap{padding:26px 20px}
+ .cart-drawer{max-width:100%}
+ .cart-item{grid-template-columns:52px 1fr auto auto;gap:8px}
+ .cart-item h4{font-size:14px}
+ .qty-row{gap:10px}
+ .btn-add-cart{width:100%}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<div class="top">Made in USA. Third party tested. Cold chain shipping worldwide.</div>
+<div class="top">Made in USA. High Purity. Research Graded. Cold chain shipping worldwide.</div>
+
 <header><div class="wrap bar">
  <button class="burger" onclick="document.getElementById('navM').classList.toggle('open')" aria-label="Menu">Menu</button>
  <nav class="dnav" id="navL"></nav>
  <a href="#home" class="logo">NOVEX<small>PEPTIDES</small></a>
- <div class="rt"><nav class="dnav" id="navR"></nav><div class="tools">
-  <a class="btn" href="#products">Shop Now</a></div></div>
+ <div class="rt">
+  <nav class="dnav" id="navR"></nav>
+  <div class="tools">
+   <a class="btn" href="#products" style="padding:10px 20px;font-size:12px">Shop Now</a>
+   <button class="cart-trigger-btn" id="headerCartBtn" onclick="openCartDrawer()" aria-label="Shopping Cart">
+     <svg viewBox="0 0 24 24">
+       <circle cx="9" cy="21" r="1"></circle>
+       <circle cx="20" cy="21" r="1"></circle>
+       <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+     </svg>
+     <span class="cart-badge" id="cartCount">0</span>
+   </button>
+  </div>
+ </div>
  <nav class="mnav" id="navM"></nav>
 </div></header>
+
 <main id="app"></main>
+
+<!-- Lightbox Modal untuk Testimony Landscape -->
+<div class="t-lightbox" id="tLightbox" onclick="if(event.target===this)closeTestimonyModal()">
+  <div class="t-lightbox-inner">
+    <button class="t-lightbox-close" onclick="closeTestimonyModal()" aria-label="Close">&times;</button>
+    <img id="tLightboxImg" src="" alt="Client Transformation">
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toastMsg">✓ Added to cart</div>
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3 style="font-size:22px">Your Research Cart</h3>
+    <button onclick="closeCartDrawer()" style="background:none;font-size:24px;color:var(--mut)">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItemsList"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span style="font-weight:600">Total Order:</span>
+      <span class="cart-total-price" id="cartTotal">RM 0.00</span>
+    </div>
+    <button class="btn-wa-proceed" onclick="proceedToWhatsApp()">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.8c-2 0-3.9-.6-5.6-1.6l-.4-.2-4 1 1.1-3.9-.3-.4A10.7 10.7 0 1 1 16 26.8zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-1.900-.9-3.100-1.700-4.300-3.800-.3-.6.3-.5.9-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.200 1.100-1.200 2.800s1.200 3.300 1.400 3.500c.2.2 2.400 3.700 5.900 5.200 2.200.9 3 1 4.100.8.700-.1 1.900-.8 2.200-1.500.3-.7.3-1.400.2-1.500-.1-.2-.3-.2-.6-.4z"/></svg>
+      Click To Proceed
+    </button>
+  </div>
+</div>
+
+<!-- Modal Size Chart -->
+<div class="modal-overlay" id="sizeModal" onclick="if(event.target===this)closeSizeModal()">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeSizeModal()">&times;</button>
+    <h3 style="font-size:24px;margin-bottom:6px">Size Chart (Adult)</h3>
+    <p style="font-size:13px;color:var(--mut);margin-bottom:12px">Novex Premium Athletic Jersey — All measurements in inches.</p>
+    <div class="table-scroll">
+      <table class="size-table">
+        <thead>
+          <tr><th>Size</th><th>Length (A)</th><th>Chest (B)</th><th>Shoulder</th><th>Short Sleeve</th><th>Long Sleeve</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>S</b></td><td>26</td><td>38</td><td>16</td><td>8.5</td><td>22.5</td></tr>
+          <tr><td><b>M</b></td><td>27</td><td>40</td><td>17</td><td>9</td><td>23</td></tr>
+          <tr><td><b>L</b></td><td>28</td><td>42</td><td>18</td><td>9.5</td><td>23.5</td></tr>
+          <tr><td><b>XL</b></td><td>29</td><td>44</td><td>19</td><td>10</td><td>24</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="font-size:12px;color:var(--mut);line-height:1.6;background:var(--bg2);padding:14px;border-radius:12px">
+      <b>How to Measure:</b><br>
+      • <b>Length (A):</b> Measure from the highest point of the shoulder to the bottom of the shirt.<br>
+      • <b>Chest (B):</b> Measure around the fullest part of the chest, keeping the tape horizontal.
+    </div>
+  </div>
+</div>
+
 <footer><div class="wrap">
  <div class="fg">
   <div><h4>Novex Peptides</h4><p>Advanced peptide research for performance, longevity and aesthetic health.</p></div>
   <div><h4>Support</h4><ul><li><a href="#contact">FAQ</a></li><li><a href="#contact">Shipping &amp; Delivery</a></li><li><a href="#contact">Order Tracking</a></li><li><a href="#contact">Return Policy</a></li><li><a href="#contact">Terms &amp; Conditions</a></li><li><a href="#contact">Privacy Policy</a></li></ul></div>
-  <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li><li><a href="#">TikTok</a></li></ul></div>
-  <div><h4>Newsletter</h4><p>Subscribe for updates, new products and research insights.</p><form class="nl" onsubmit="event.preventDefault();this.innerHTML='<p>Thank you for subscribing.</p>'"><input type="email" required placeholder="Email address" aria-label="Email"><button>Subscribe</button></form></div>
+  <div>
+    <h4>Follow Us</h4>
+    <div class="social-links">
+      <a href="https://www.instagram.com/novexperfomancedivision?rpxt=MWhrc2tlYjFkdXNjaA==" target="_blank" rel="noopener" class="social-link" aria-label="Follow us on Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/@fthulaimn?_r=1&_t=ZS-9AigtDpLBg1" target="_blank" rel="noopener" class="social-link" aria-label="Follow us on TikTok">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.37a6.34 6.34 0 0 0-.86-.06A6.33 6.33 0 0 0 3.1 15.64a6.34 6.34 0 0 0 10.82 4.48 6.27 6.27 0 0 0 1.89-4.48V8.78a8.28 8.28 0 0 0 4.78 1.5V6.82a4.84 4.84 0 0 1-1-.13z"/>
+        </svg>
+        <span>TikTok</span>
+      </a>
+    </div>
+  </div>
+  <div><h4>Contact Desk</h4><p>Direct WhatsApp &amp; Inquiries:<br><b>+60 11-1208 5054</b></p></div>
  </div>
  <div class="copy"><span>© 2026 Novex Peptides. All rights reserved.</span><span>For laboratory research use only. Not for human consumption.</span></div>
 </div></footer>
-<script>
-const WA='60123456789'; // GANTI nombor WhatsApp anda (format antarabangsa tanpa +)
-const u=(id,w=900)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
-const I={hero:'1532187863486-abf9dbad1b69',lab1:'1579154204601-01588f351e67',lab2:'1576091160399-112ba8d25d1d',dna:'1559757148-5c350d0d3c56',
- serum:'1620916566398-39f1143ab7be',drop:'1612817288484-6f916006741a',serum2:'1608248543803-ba4f8c70ae0b',cream:'1571781926291-c477ebfd024b',
- skin:'1522335789203-aabd1fc54bc9',face:'1617897903246-719242758050',cos:'1596462502278-27bfdc403348',glow:'1598440947619-2c35fc9aa908',
- fit:'1571019613454-1cb2f99b2d8b',run:'1552674605-db6ffd4facb5',food:'1490645935967-10de6ba17061',age:'1544005313-94ddf0286df2',ship:'1566576912321-d58ddd7a6088',sci:'1507413245164-6160d8298b31',
- s1:'1620916566398-39f1143ab7be',s2:'1612817288484-6f916006741a',s3:'1608248543803-ba4f8c70ae0b',s4:'1571781926291-c477ebfd024b',s5:'1596462502278-27bfdc403348',s6:'1570172619644-dfd03ed5d881',s7:'1556229010-6c3f2c9ca5f8',s8:'1631729371254-42c2892f0e6e',s9:'1556228720-195a672e8a03'}
-const FB=['1556228720-195a672e8a03','1522335789203-aabd1fc54bc9','1601049541289-9b1b7bbbfe19'];
-function fb(el){const n=+(el.dataset.n||0);if(n<FB.length){el.dataset.n=n+1;el.src=u(FB[n],700)}else el.style.opacity=.2}
-let hi=0,ht;
-function go(n){const s=document.querySelectorAll('.slide');if(!s.length)return;hi=(n+s.length)%s.length;s.forEach((x,i)=>x.classList.toggle('on',i===hi));document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===hi))};
-const img=(k,w,alt='')=>`<img src="${u(I[k],w)}" alt="${alt}" loading="lazy" onerror="fb(this)">`;
-const menu=['Home','About','Products','Science','Skincare','Resources','Contact'];
-const wasvg='<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.8c-2 0-3.9-.6-5.6-1.6l-.4-.2-4 1 1.1-3.9-.3-.4A10.7 10.7 0 1 1 16 26.8zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-1.900-.9-3.100-1.700-4.300-3.800-.3-.6.3-.5.9-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.200 1.100-1.200 2.800s1.200 3.300 1.400 3.500c.2.2 2.400 3.700 5.900 5.200 2.200.9 3 1 4.100.8.700-.1 1.900-.8 2.200-1.500.3-.7.3-1.400.2-1.500-.1-.2-.3-.2-.6-.4z"/></svg>';
-const P=[
- {n:'SLU-PP-332',t:'Pan-ERR Agonist',s:'5mg/Vial',c:'Performance',i:'s1'},
- {n:'GHK-Cu',t:'Copper Peptide',s:'100mg/Vial',c:'Anti-Aging',i:'s2'},
- {n:'Retatrutide',t:'Triple Receptor Agonist',s:'60mg/Vial',c:'Weight Management',i:'s3'},
- {n:'NAD+',t:'Nicotinamide Adenine Dinucleotide',s:'500mg/Vial',c:'Anti-Aging',i:'s4'},
- {n:'MOTS-C',t:'Mitochondrial Peptide',s:'20mg/Vial',c:'Performance',i:'s5'},
- {n:'AICAR',t:'Metabolic Activator',s:'50mg/Vial',c:'Weight Management',i:'s6'},
- {n:'Novaglow Serum',t:'Advanced Peptide Skincare',s:'Skincare',c:'Skincare',i:'s7'},
- {n:'Novex GHK-Cu SNAP 8',t:'Advanced Peptide Skincare',s:'Skincare',c:'Skincare',i:'s8'}];
-const order=n=>`https://wa.me/${WA}?text=${encodeURIComponent('Hi Novex Peptides, I would like to order: '+n)}`;
 
-/* Fungsi kad yang menyertakan butang pesanan WhatsApp untuk semua kategori produk */
-const card=p=>{
- const sk=p.c==='Skincare';
- return `<div class="card pc">
-  <div class="ph">${img(p.i,600,p.n)}<span class="chip">${p.c}</span></div>
-  <div class="b">
-   <h3>${p.n}</h3>
-   <p class="s">${p.t}</p>
-   <div class="meta"><span>${sk?'Novex Beauty':p.s}</span><span>${sk?'Daily care':'Research grade'}</span></div>
-   <a class="wa" href="${order(p.n)}" target="_blank" rel="noopener">${wasvg}Click to Order</a>
-  </div>
- </div>`;
+<script>
+// NOMBOR WHATSAPP SELLER
+const WA = '601112085054';
+
+const u = (id, w=1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=85`;
+const I = {
+  hero: '1532187863486-abf9dbad1b69', lab1: '1579154204601-01588f351e67', lab2: '1576091160399-112ba8d25d1d', dna: '1559757148-5c350d0d3c56',
+  serum: '1620916566398-39f1143ab7be', drop: '1612817288484-6f916006741a', serum2: '1608248543803-ba4f8c70ae0b', cream: '1571781926291-c477ebfd024b',
+  skin: '1522335789203-aabd1fc54bc9', face: '1617897903246-719242758050', cos: '1596462502278-27bfdc403348', glow: '1598440947619-2c35fc9aa908',
+  fit: '1571019613454-1cb2f99b2d8b', run: '1552674605-db6ffd4facb5', food: '1490645935967-10de6ba17061', age: '1544005313-94ddf0286df2',
+  ship: '1566576912321-d58ddd7a6088', sci: '1507413245164-6160d8298b31',
+  s1: '1620916566398-39f1143ab7be', s2: '1612817288484-6f916006741a', s3: '1608248543803-ba4f8c70ae0b', s4: '1571781926291-c477ebfd024b',
+  s5: '1596462502278-27bfdc403348', s6: '1570172619644-dfd03ed5d881', s7: '1556229010-6c3f2c9ca5f8', s8: '1631729371254-42c2892f0e6e',
+  s9: '1556228720-195a672e8a03', jersey: '1521572267360-ee0c2909d518',
+  d_lab: '1582719478250-c89cae4dc85b', d_vial: '1584308666744-24d5c474f2ae',
+  d_fitness: '1517838277536-f5f99be501cd', d_muscle: '1534438327276-14e5300c3a48',
+  d_skin1: '1570172619644-dfd03ed5d881', d_skin2: '1512290903672-9b222956cf5a',
+  d_cloth1: '1489987707025-afc232f7ea0f', d_cloth2: '1503342217505-b0a15ec3261c'
 };
 
-const A=[
- {id:'retatrutide',t:'Understanding Retatrutide',i:'dna',d:'An investigational triple-receptor agonist and what early research shows.',b:['Retatrutide is an investigational peptide designed to act on three receptors at once: GIP, GLP-1 and glucagon. This triple mechanism is what separates it from earlier single and dual agonists.','It has been studied in clinical trials run by its originator, and it is not an approved medicine. Published trial data are early and should be read with that in mind.','At Novex Peptides, retatrutide is supplied strictly as a research-grade compound for laboratory use, with third-party purity testing on every batch.']},
- {id:'ghk-cu',t:'The Science of GHK-Cu',i:'serum',d:'A naturally occurring copper peptide and its role in skin biology research.',b:['GHK-Cu is a small tripeptide that binds copper. It occurs naturally in human plasma, and levels are reported to fall with age.','Laboratory studies have examined its effect on collagen synthesis, wound repair and skin remodelling pathways.','It is also a cosmetic ingredient, which is why it appears in our Novex Beauty skincare range as well as in the research catalogue.']},
- {id:'nad',t:'Benefits of NAD+',i:'sci',d:'Why this coenzyme sits at the centre of cellular energy research.',b:['NAD+ is a coenzyme found in every living cell. It carries electrons in energy metabolism and supports enzymes involved in DNA repair.','Research has reported that NAD+ levels decline with age, which is why it is a frequent subject in longevity studies.','Evidence for supplementation in humans is still developing, so our NAD+ is offered for research purposes only.']},
- {id:'slu',t:'What is SLU-PP-332',i:'fit',d:'A synthetic ERR agonist studied as an exercise-mimetic compound.',b:['SLU-PP-332 is a synthetic compound that activates the estrogen-related receptors (ERRs), which help regulate mitochondrial function and energy use.','Published work so far is preclinical, mainly in mice, where it was linked to improved endurance and metabolic markers.','There is no established human safety or efficacy data. Novex supplies it as a research-grade material for laboratory investigation.']}];
-const sk=(p,d)=>`<div class="card sk"><div class="ph">${img(p.i,900,p.n)}</div><div class="b"><span class="tag">${p.t.toUpperCase()}</span><h3>${p.n}</h3><p>${d}</p></div></div>`;
-const S=[{k:'s9',h:'Precision in<br>Every Molecule',p:'Advanced peptide research. Science drives results, with premium quality made in USA.'},{k:'glow',h:'Fuel a Higher<br>Standard',p:'Science Driven Performance.'},{k:'face',h:'Radiant Skin<br>From Within',p:'Advanced Peptide Skincare from Novex Beauty.'}];
-const slider=()=>`<section class="hero sl">${S.map((s,i)=>`<div class="slide${i?'':' on'}">${img(s.k,2000,'')}<div class="wrap"><h1>${s.h}</h1><p>${s.p}</p><a class="btn" href="#products">Shop Now</a><a class="btn line" href="#science">Our Science</a></div></div>`).join('')}<div class="ctl"><div class="wrap"><div class="dots2">${S.map((s,i)=>`<button class="dot${i?'':' on'}" onclick="go(${i})" aria-label="Slide ${i+1}"></button>`).join('')}</div><div class="arr"><button onclick="go(hi-1)" aria-label="Previous">&#8592;</button><button onclick="go(hi+1)" aria-label="Next">&#8594;</button></div></div></div></section>`;
-const sc=id=>`onclick="event.preventDefault();document.getElementById('${id}').scrollIntoView({behavior:'smooth'})"`;
-const hero=(k,h,p,btns,v='')=>`<section class="hero ${v==='lt'?'lt':''}">${img(k,1800,'').replace('lazy','eager')}<div class="wrap"><div class="in"><h1>${h}</h1><p>${p}</p>${btns}</div></div></section>`;
-const cat=(k,t,s,l)=>`<a class="cat" href="${l}">${img(k,700,t)}<div><h3>${t}</h3><p>${s}</p></div></a>`;
-
-const pages={
-home:()=>`${slider()}
-<div class="mq"><div>${[...Array(2)].map(()=>['Advanced peptide research','Science drives results','Third party tested','Cold chain from vial to door','Made in USA','Research grade only'].map(x=>`<span>${x}</span>`).join('')).join('')}</div></div>
-<section class="sec"><div class="wrap">
- <div class="head"><div><h2>Research, by category</h2><p>Four focus areas, each built on tested, high-purity compounds.</p></div></div>
- <div class="g4">${cat('fit','Peptides Performance','Strength. Energy. Recovery.','#products')}${cat('food','Peptides Weight Management','Control. Balance. A Healthier You.','#products')}${cat('age','Peptides Anti-Aging','Renew. Rejuvenate. Longevity.','#products')}${cat('face','Skincare Novex Beauty','Glow. Repair. Radiant Skin.','#skincare')}</div>
-</div></section>
-<section class="sec alt"><div class="wrap g2"><div><h2>Science Today.<br>A Healthier Tomorrow.</h2><p style="margin:18px 0 26px;color:var(--mut);max-width:460px">Our catalogue is small on purpose. Six research compounds and a peptide skincare line, each chosen because there is real published work behind it and because we can test it properly.</p><div class="stats"><div><b>6</b><span>RESEARCH COMPOUNDS</span></div><div><b>2</b><span>DIVISIONS</span></div><div><b>4</b><span>FOCUS AREAS</span></div></div><a class="btn" style="margin-top:30px" href="#science">Read the science</a></div><div class="ph arch">${img('s9',900,'Peptide skincare')}</div></div></section>
-<section class="sec"><div class="wrap">
- <div class="head"><div><h2>Featured products</h2></div><a class="btn line" href="#products">View all</a></div>
- <div class="g4">${P.slice(0,4).map(card).join('')}</div>
-</div></section>
-<section class="sec" style="padding-top:0"><div class="wrap div2">
-<div class="camp">${img('fit',1000,'')}<div><h2>Fuel a Higher Standard</h2><p>Science Driven Performance</p><a class="btn" style="background:#FFFFFF;color:var(--green)" href="#products">Explore peptides</a></div></div>
-<div class="camp">${img('glow',1000,'')}<div><h2>Radiant Skin From Within</h2><p>Advanced Peptide Skincare</p><a class="btn" style="background:#FFFFFF;color:var(--green)" href="#skincare">Explore skincare</a></div></div></div></section>
-<section class="sec alt"><div class="wrap">
- <div class="head"><div><h2>From the bench to your door</h2><p>Four checkpoints every vial passes before it leaves us. Details of each are on the Science page.</p></div></div>
- <div class="steps"><div><b>01</b><h3>Synthesis</h3><p>Compounds are produced in a cGMP partner facility in the USA, with each run logged against a batch number.</p></div><div><b>02</b><h3>Independent testing</h3><p>An outside laboratory checks identity and purity, so the result does not come from our own bench.</p></div><div><b>03</b><h3>Cold storage</h3><p>Vials wait in temperature-controlled storage until an order is confirmed, never on an open shelf.</p></div><div><b>04</b><h3>Insulated dispatch</h3><p>Orders leave Monday to Thursday in thermal packaging so nothing sits in a depot over a weekend.</p></div></div>
-</div></section>
-<section class="sec"><div class="wrap">
- <div class="head"><div><h2>Science Today. A Healthier Tomorrow.</h2></div><a class="btn line" href="#resources">All articles</a></div>
- <div class="g4 art">${A.map(a=>`<a class="card" href="#resources/${a.id}"><div class="ph">${img(a.i,500,a.t)}</div><div class="b"><h3>${a.t}</h3></div></a>`).join('')}</div>
-</div></section>`,
-
-about:()=>`${hero('lab1','One question behind every vial','Is it really what the label says? Novex was built to answer that clearly, with paper to back it up.','','bot','Our story')}
-<section class="sec"><div class="wrap g2">
- <div class="ph w">${img('lab2',1000,'')}</div>
- <div><h2>Why Novex exists</h2><p style="margin-top:18px;color:#3A4D5E">Researchers buying peptides online kept running into the same problem: a certificate that could not be matched to the vial in their hand. We started Novex as a sourcing desk that treats the batch number as the centre of everything.</p><p style="margin-top:14px;color:#3A4D5E">Over time that grew into a full catalogue with two divisions, one for laboratory compounds and one for peptide skincare. The rule stayed the same. If we cannot test it, trace it and explain it in plain language, it does not go on the site.</p></div>
-</div></section>
-<section class="sec alt"><div class="wrap">
- <div class="head"><div><h2>How we work</h2><p>Four habits that shape what we stock and how we ship it.</p></div></div>
- <div class="rows"><div><b>01</b><h3>Source narrowly</h3><p>We would rather list six compounds we understand than sixty we cannot vouch for. Each addition needs published literature and a supplier we can audit.</p></div><div><b>02</b><h3>Test outside</h3><p>Purity results come from a third-party laboratory and are tied to the lot printed on your vial, so you can ask for the report and read the actual numbers.</p></div><div><b>03</b><h3>Keep it cold</h3><p>Peptides degrade with heat. Storage and shipping are designed around that single fact, from insulated boxes to dispatch days that avoid weekend delays.</p></div><div><b>04</b><h3>Explain plainly</h3><p>Our articles state what a compound is, what has been studied and what has not. No promises, no shortcuts around the research-use boundary.</p></div></div>
-</div></section>
-<section class="sec"><div class="wrap">
- <div class="head"><div><h2>Two divisions, one standard</h2></div></div>
- <div class="div2">${cat('lab1','Peptides Division','Research-grade compounds for metabolism, performance and longevity studies, supplied in sealed vials with batch documentation.','#products')}${cat('serum','Skincare Division','Novex Beauty applies the same sourcing discipline to cosmetic peptides, formulated for everyday skin care.','#skincare')}</div>
-</div></section>
-<section class="sec lite"><div class="wrap"><p class="pull">“A good certificate is one you can match to the vial in your hand.”<small>THE NOVEX PRINCIPLE</small></p></div></section>`,
-
-products:()=>`<section class="sec" id="cat"><div class="wrap">
- <div class="head"><div><h1 style="font-size:clamp(36px,5vw,60px)">Shop Catalog</h1><p>Research-grade compounds, third party tested. Tap Click to Order to message us on WhatsApp.</p></div></div>
- <input id="q" class="sq" type="search" placeholder="Search products" aria-label="Search products">
- <div class="filter" id="flt">${['All','Performance','Weight Management','Anti-Aging','Skincare'].map((f,i)=>`<button class="${i?'':'on'}" data-f="${f}">${f}</button>`).join('')}</div>
- <div class="g4" id="pg">${P.map(card).join('')}</div>
- <p class="note">Research chemicals are sold for in-vitro and laboratory research use only. Not for human or veterinary use. Not evaluated by any health authority to diagnose, treat or prevent any condition.</p>
-</div></section>
-<section class="sec alt"><div class="wrap">
- <div class="head"><div><h2>Before you order</h2><p>Short notes on reading a listing and looking after what arrives.</p></div></div>
- <div class="g3"><div class="tx"><h3>Reading a listing</h3><p>Each product shows its compound class, the amount per vial and a focus category. The amount refers to the total content of one sealed vial, not a recommended quantity of anything.</p></div><div class="tx"><h3>Storage on arrival</h3><p>Unopened lyophilised vials should go straight into cold storage. Keep them away from light and avoid repeated warming, since temperature swings are the main cause of degradation.</p></div><div class="tx"><h3>Documentation</h3><p>Quote the lot number on your vial through WhatsApp or the contact form and we will send the matching purity report. Institutions can request volume allocations the same way.</p></div></div>
-</div></section>`,
-
-science:()=>`${hero('dna','Science today.<br>A healthier tomorrow.','Plain-language notes on the compounds we supply and the tests that stand behind them.','<a class="btn" href="#ing" '+sc('ing')+'>Ingredients guide</a>','rgt','The lab notebook')}
-<section class="sec" id="ing"><div class="wrap">
- <div class="head"><div><h2>Ingredients guide</h2><p>What each compound is, in one glance. For deeper reading, see the Resources page.</p></div></div>
- <div class="ing">${P.slice(0,6).map(p=>`<div class="card"><div class="ph">${img(p.i,500,p.n)}</div><div class="b"><h3>${p.n}</h3><ul><li>${p.t}</li><li>Format: ${p.s}</li><li>Category:${p.c}</li></ul></div></div>`).join('')}</div>
-</div></section>
-<section class="sec alt"><div class="wrap">
- <div class="head"><div><h2>How a batch is tested</h2><p>Three questions, three methods. Together they tell a researcher what is actually in the vial.</p></div></div>
- <div class="rows"><div><b>I</b><h3>Identity</h3><p>Mass spectrometry confirms the molecular weight matches the intended peptide, ruling out a wrong or substituted compound.</p></div><div><b>II</b><h3>Purity</h3><p>HPLC separates the sample into its components and reports what share is the target peptide versus related impurities.</p></div><div><b>III</b><h3>Content</h3><p>Quantity testing checks that the amount stated on the label matches what the sealed vial holds.</p></div></div>
-</div></section>
-<section class="sec ed"><div class="wrap g2"><div class="ph w">${img('sci',1000,'')}</div><div><h2>The essence of rigour</h2><div class="cols" style="margin-top:22px"><p>Results are tied to batch numbers so researchers can check what they receive rather than trust a general claim.</p><p>Vials are produced under cGMP conditions and shipped cold, because stability in transit matters as much as purity at release.</p></div></div></div></section>
-<section class="sec"><div class="wrap">
- <div class="head"><div><h2>Short glossary</h2></div></div>
- <div class="gl"><div><b>Lyophilised</b><p>Freeze-dried into a stable powder, which keeps a peptide intact far longer than a liquid.</p></div><div><b>HPLC</b><p>High-performance liquid chromatography, the standard method for measuring peptide purity.</p></div><div><b>Agonist</b><p>A molecule that activates a receptor. Retatrutide, for example, is studied at three of them.</p></div><div><b>cGMP</b><p>Current good manufacturing practice, a framework for consistent, documented production.</p></div><div><b>COA</b><p>Certificate of analysis, the report that lists test results for one specific lot.</p></div><div><b>Cold chain</b><p>An unbroken run of controlled temperatures from storage to the customer’s door.</p></div></div>
-</div></section>`,
-
-skincare:()=>`${hero('face','Skin that looks lit from within','Novex Beauty brings peptide science into a quiet, daily routine. Soft textures, honest ingredients, visible care.','<a class="btn" href="#sk" '+sc('sk')+'>Meet the range</a>','lt','Novex Beauty')}
-<section class="sec" id="sk"><div class="wrap">
- <div class="head"><div><h2>The range</h2><p>Two formulas, designed to work together or on their own.</p></div></div>
- <div class="ft">${sk(P[6],'A lightweight serum that sinks in without residue. Built around peptides for a smoother, more even-looking finish, and gentle enough to sit under moisturiser or sunscreen.')}${sk(P[7],'Pairs a copper peptide with SNAP-8 for a cushioned, hydrated feel. Many people use it at night, when skin is not competing with makeup or SPF.')}</div>
-</div></section>
-<section class="sec lite"><div class="wrap">
- <div class="head"><div><h2>A simple ritual</h2><p>Three steps, under five minutes, nothing to memorise.</p></div></div>
- <div class="steps" style="grid-template-columns:repeat(3,1fr)"><div><b>i</b><h3>Cleanse</h3><p>Start with a mild cleanser and pat dry. Slightly damp skin takes up serum more comfortably.</p></div><div><b>ii</b><h3>Layer</h3><p>Press a few drops of serum into the face and neck, then follow with the GHK-Cu SNAP 8 formula if you like.</p></div><div><b>iii</b><h3>Protect</h3><p>Finish with moisturiser, and sunscreen in the morning. Peptides work best on well-protected skin.</p></div></div>
-</div></section>
-<section class="sec"><div class="wrap g2"><div class="ph w">${img('glow',1000,'')}</div><div><h2>Why GHK-Cu</h2><p style="margin:16px 0 14px;color:#3A4D5E">GHK-Cu is a small copper-binding peptide found naturally in the body. In cosmetic science it is valued for supporting the look of firmer, more resilient skin.</p><p style="margin:0 0 24px;color:#3A4D5E">Our article walks through where the ingredient comes from, what laboratory studies have explored and where the research is still early.</p><a class="btn" href="#resources/ghk-cu">Read article</a></div></div></section>`,
-
-resources:(arg)=>{
- const a=A.find(x=>x.id===arg);
- if(a)return`${hero(a.i,a.t,a.d,'<a class="btn line" href="#resources">All articles</a>','bot','Research note')}<section class="sec ed"><div class="wrap"><div class="g2" style="align-items:start"><div class="ph w">${img(a.i,1000,a.t)}</div><div class="cols" style="columns:1">${a.b.map(x=>`<p>${x}</p>`).join('')}<p class="note">Educational content for research context only. It is not medical advice.</p></div></div></div></section>`;
- return`${hero('sci','Read before you research','Short, careful articles on the compounds in our catalogue, written to explain rather than to sell.','<a class="btn" href="#all" '+sc('all')+'>Browse articles</a>','bot','Resources')}
-<section class="sec" id="all"><div class="wrap">
- <div class="head"><div><h2>Latest articles</h2><p>Each piece separates what is established from what is still being studied.</p></div></div>
- <div class="g2 art">${A.map(a=>`<a class="card" href="#resources/${a.id}"><div class="ph shot">${img(a.i,800,a.t)}</div><div class="b"><h3>${a.t}</h3><p class="s">${a.d}</p></div></a>`).join('')}</div>
-</div></section>`;
-},
-
-contact:()=>`
-${hero('ship','Talk to the people who pack the box','Questions on a lot number, a delivery window or a bulk allocation? We answer them directly.','<a class="btn" href="#cf" '+sc('cf')+'>Send an enquiry</a>','','Contact')}
-<section class="sec"><div class="wrap">
- <div class="c-grid">
-  <div>
-   <div class="c-wa-box">
-    <span class="c-kicker">Priority Channel</span>
-    <h3>Direct WhatsApp Concierge</h3>
-    <p>For immediate product availability, wholesale enquiries, or real-time cold-chain tracking, speak directly with our specialist team.</p>
-    <a class="wa" href="${order('a product enquiry')}" target="_blank" rel="noopener">${wasvg}Chat on WhatsApp</a>
-   </div>
-   <div class="c-specs">
-    <div class="c-spec">
-     <small>Logistics</small>
-     <h4>Cold-Chain Dispatch</h4>
-     <p>Insulated thermal packaging shipped Monday to Thursday to preserve molecular stability.</p>
-    </div>
-    <div class="c-spec">
-     <small>Verification</small>
-     <h4>Batch COA Lookup</h4>
-     <p>Request HPLC &amp; Mass Spectrometry purity reports tied to your vial lot number.</p>
-    </div>
-    <div class="c-spec">
-     <small>Laboratory Desk</small>
-     <h4>Direct Email</h4>
-     <p>concierge@novexpeptides.com<br>Response within 24 business hours.</p>
-    </div>
-    <div class="c-spec">
-     <small>Operations</small>
-     <h4>Fulfilment Hours</h4>
-     <p>Mon to Fri, 9:00 AM to 6:00 PM EST<br>USA cGMP Partner Facility</p>
-    </div>
-   </div>
-   <div class="c-visual">
-    <div class="ph">${img('lab1',400,'Novex Quality')}</div>
-    <div>
-     <span class="c-kicker" style="margin-bottom:4px">Quality Assurance</span>
-     <h4>Every Vial Accounted For</h4>
-     <p>All compounds undergo rigorous third-party testing prior to cold-storage release.</p>
-    </div>
-   </div>
-  </div>
-  <div class="c-form-wrap" id="cf">
-   <h2>Send an Enquiry</h2>
-   <p>Complete the form below and our research support team will respond shortly.</p>
-   <form class="form" onsubmit="event.preventDefault();this.innerHTML='<div style=\'padding:36px 20px;text-align:center;background:var(--bg2);border:1px solid var(--line)\'><h3 style=\'margin-bottom:8px;color:var(--green)\'>Enquiry Received</h3><p style=\'color:var(--mut);font-size:14px\'>Thank you for contacting Novex Peptides. Our team will review your message and respond within one business day.</p></div>'">
-    <div class="f-row">
-     <div class="f-grp"><label for="cn">Full Name</label><input id="cn" required placeholder="Dr. / Researcher Name"></div>
-     <div class="f-grp"><label for="ce">Email Address</label><input id="ce" type="email" required placeholder="name@institution.com"></div>
-    </div>
-    <div class="f-row">
-     <div class="f-grp"><label for="ct">Enquiry Topic</label>
-      <select id="ct">
-       <option>Product &amp; Compound Specification</option>
-       <option>Order &amp; Cold-Chain Tracking</option>
-       <option>Certificate of Analysis (COA) Request</option>
-       <option>Novex Beauty Skincare</option>
-       <option>Institutional / Bulk Supply</option>
-      </select>
-     </div>
-     <div class="f-grp"><label for="cb">Order / Batch No. (Optional)</label><input id="cb" placeholder="e.g. NVX-2026-084"></div>
-    </div>
-    <div class="f-grp"><label for="cm">Message</label><textarea id="cm" rows="5" required placeholder="How can our team assist your research or order today?"></textarea></div>
-    <button class="btn">Submit Enquiry</button>
-    <p class="c-note">Strict privacy guaranteed. For laboratory and research enquiries only.</p>
-   </form>
-  </div>
- </div>
- <div class="c-faq">
-  <div class="head"><div><span class="c-kicker">Quick Answers</span><h2>Frequently Asked</h2><p>Essential details regarding our handling, verification and shipping protocols.</p></div></div>
-  <div class="g3">
-   <div class="c-faq-card"><span>01</span><h3>How are peptides shipped?</h3><p>All temperature-sensitive compounds are dispatched in validated cold-chain packaging with express international tracking to maintain integrity in transit.</p></div>
-   <div class="c-faq-card"><span>02</span><h3>Can I verify batch purity?</h3><p>Yes. Every production batch is independently analysed via HPLC. Quote your lot number via WhatsApp or the enquiry form to receive the corresponding COA.</p></div>
-   <div class="c-faq-card"><span>03</span><h3>Do you supply bulk orders?</h3><p>We support accredited laboratories and clinics with volume allocations. Select "Institutional / Bulk Supply" in the form above for dedicated pricing.</p></div>
-  </div>
- </div>
-</div></section>`};
-
-function route(){
- const [p,arg]=(location.hash.slice(1)||'home').split('/');
- const k=pages[p]?p:'home';
- document.getElementById('app').innerHTML=pages[k](arg);
- setOff();
- const lk=a=>a.map(m=>`<a href="#${m.toLowerCase()}" class="${m.toLowerCase()===k?'on':''}">${m}</a>`).join('');
- document.getElementById('navL').innerHTML=lk(menu.slice(0,4));
- document.getElementById('navR').innerHTML=lk(menu.slice(4));
- document.getElementById('navM').innerHTML=lk(menu);
- document.getElementById('navM').classList.remove('open');
- window.scrollTo(0,0);
- const f=document.getElementById('flt'),q=document.getElementById('q');
- const show=()=>{
-  const b=f.querySelector('.on').dataset.f,t=q.value.trim().toLowerCase();
-  const r=P.filter(x=>(b==='All'||x.c===b)&&(x.n+x.t+x.c).toLowerCase().includes(t));
-  document.getElementById('pg').innerHTML=r.length?r.map(card).join(''):'<p class="s">No products match your search.</p>';
- };
- if(f){
-  f.onclick=e=>{
-   const b=e.target.closest('button');
-   if(!b)return;
-   f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
-   show();
-  };
-  q.oninput=show;
-  if(window.fq){q.focus();window.fq=0}
- }
- clearInterval(ht);
- hi=0;
- if(document.querySelector('.slide')&&!matchMedia('(prefers-reduced-motion:reduce)').matches)ht=setInterval(()=>go(hi+1),7000);
+const FB = ['1556228720-195a672e8a03', '1522335789203-aabd1fc54bc9', '1601049541289-9b1b7bbbfe19'];
+function fb(el){
+  const n = +(el.dataset.n || 0);
+  if(n < FB.length){
+    el.dataset.n = n + 1;
+    el.src = u(FB[n], 700);
+  } else {
+    el.style.opacity = .2;
+  }
 }
 
-const setOff=()=>{
- const topEl=document.querySelector('.top');
- const hdrEl=document.querySelector('header');
- const h=(topEl?topEl.offsetHeight:0)+(hdrEl?hdrEl.offsetHeight:0);
- document.documentElement.style.setProperty('--off',h+'px');
+const getImgUrl = (k, w=1200) => {
+  if(!k) return '';
+  if(I[k]) return u(I[k], w);
+  if(k.startsWith('http') || k.endsWith('.webp') || k.endsWith('.png') || k.endsWith('.jpg') || k.endsWith('.svg')) return k;
+  return u(k, w);
+};
+const img = (k, w=1200, alt='') => `<img src="${getImgUrl(k, w)}" alt="${alt}" loading="lazy" onerror="fb(this)">`;
+
+const menu = ['Home', 'About', 'Products', 'Science', 'Resources', 'Contact'];
+
+// Data 6 Testimony Landscape (t1.webp hingga t6.webp)
+const T = [
+  { img: 't1.webp', title: 'Weight Management & Vitality', sub: 'Achieve a leaner physique with consistent protocol adherence.' },
+  { img: 't2.webp', title: 'Stamina & Daily Endurance', sub: 'Boost daily metabolic energy, focus and persistent recovery.' },
+  { img: 't3.webp', title: 'Active Lifestyle & Confidence', sub: 'Revitalise metabolic resilience and support active healthy lifestyles.' },
+  { img: 't4.webp', title: 'Metabolic Balance & Toning', sub: 'Consistent multi-receptor modulation for lean tissue support.' },
+  { img: 't5.webp', title: 'Radiant & Youthful Skin', sub: 'Stimulate natural matrix renewal for healthy texture and clarity.' },
+  { img: 't6.webp', title: 'Strength & Physical Recovery', sub: 'Optimised pathways designed to support recovery and tissue vitality.' }
+];
+
+function openTestimonyModal(src){
+  const m = document.getElementById('tLightbox');
+  const im = document.getElementById('tLightboxImg');
+  if(m && im){
+    im.src = src;
+    m.classList.add('open');
+  }
+}
+function closeTestimonyModal(){
+  const m = document.getElementById('tLightbox');
+  if(m) m.classList.remove('open');
+}
+
+// Senarai gambar produk tempatan yang guna nisbah asal (contain) dan bucu rounded
+const localProducts = [
+  'reta1.webp', 'reta2.webp', 'reta3.webp', 'reta4.webp', 'reta5.webp',
+  'retaplus1.webp', 'retaplus2.webp',
+  'ghk1.webp', 'ghk2.webp',
+  'jry1.webp', 'jry2.webp'
+];
+
+const isContainImg = (src) => localProducts.includes(src) || (src && (src.endsWith('.webp') || src.endsWith('.png') || src.endsWith('.jpg')));
+
+// Fungsi untuk melaraskan kotak <img> tepat mengikut nisbah gambar supaya border-radius membulatkan keempat-empat bucu gambar
+function fitRoundedImg(el){
+  if(!el || !el.naturalWidth || !el.naturalHeight) return;
+  const r = el.naturalWidth / el.naturalHeight;
+  el.style.aspectRatio = el.naturalWidth + ' / ' + el.naturalHeight;
+  if(r >= 1){
+    el.style.width = '100%';
+    el.style.height = 'auto';
+  } else {
+    el.style.height = '100%';
+    el.style.width = 'auto';
+  }
+}
+
+const P = [
+ {
+   id:'retatrutide',
+   n:'Retatrutide',
+   t:'Advanced Weight Management',
+   s:'10mg - 100mg',
+   val:280,
+   p:'RM280.00 - RM980.00',
+   c:'Weight Management',
+   imgs:['reta1.webp', 'reta2.webp', 'reta3.webp', 'reta4.webp', 'reta5.webp'],
+   stock:63,
+   variants:[
+     {label:'10mg', val:280, p:'RM280.00', stock:25},
+     {label:'30mg', val:480, p:'RM480.00', stock:18},
+     {label:'60mg', val:780, p:'RM780.00', stock:12},
+     {label:'100mg', val:980, p:'RM980.00', stock:8}
+   ],
+   desc:'High-purity lyophilised triple-receptor agonist peptide synthesized for metabolic pathway investigations and weight management receptor studies. Select your preferred vial concentration above to view exact pricing.'
+ },
+ {id:'reta-plus', n:'Retatrutide Plus (RETA PLUS)', t:'Combination of Retatrutide + Cagrilintide', s:'40mg', val:590, p:'RM590.00', c:'Weight Management', imgs:['retaplus1.webp', 'retaplus2.webp'], stock:15, desc:'Synergistic dual-action formulation pairing Retatrutide with Cagrilintide for comprehensive multi-target metabolic profiling.'},
+ {id:'ghk-cu', n:'GHK-Cu', t:'Radiant Skin & Cellular Rejuvenation', s:'100mg', val:180, p:'RM180.00', c:'Skincare Peptides', imgs:['ghk1.webp', 'ghk2.webp'], stock:30, desc:'Naturally occurring copper complex tripeptide formulated for collagen matrix renewal and dermal restructuring research.'},
+ {id:'nad-plus', n:'NAD+', t:'Radiant Skin & Cellular Rejuvenation', s:'500mg', val:220, p:'RM220.00', c:'Skincare Peptides', imgs:['s4','sci'], stock:20, desc:'Essential coenzyme nicotinamide adenine dinucleotide (NAD+) supporting mitochondrial oxidative phosphorylation and cellular longevity.'},
+ {id:'gluta', n:'Glutathione', t:'Radiant Skin & Cellular Rejuvenation', s:'1500mg', val:150, p:'RM150.00', c:'Skincare Peptides', imgs:['s7','d_skin2'], stock:35, desc:'Master antioxidant compound in ultra-pure lyophilised format for cellular oxidative stress mitigation and brightening assays.'},
+ {id:'snap-8', n:'SNAP-8', t:'Radiant Skin & Cellular Rejuvenation', s:'10mg', val:180, p:'RM180.00', c:'Skincare Peptides', imgs:['s8','glow'], stock:22, desc:'Octapeptide complex engineered to study the modulation of facial muscle micro-contractions and expression lines.'},
+ {id:'tesa', n:'Tesamorelin', t:'Optimise Performance & Longevity', s:'5mg', val:170, p:'RM170.00', c:'Performance', imgs:['fit','d_fitness'], stock:14, desc:'GHRH synthetic analogue investigated for endogenous growth hormone pathway regulation and body composition analysis.'},
+ {id:'aicar', n:'AICAR', t:'Optimise Performance & Longevity', s:'50mg', val:220, p:'RM220.00', c:'Performance', imgs:['s6','d_muscle'], stock:19, desc:'AMPK activator compound investigated for cellular energy regulation and endurance adaptations in laboratory models.'},
+ {id:'motsc', n:'MOTS-C', t:'Optimise Performance & Longevity', s:'20mg', val:180, p:'RM180.00', c:'Performance', imgs:['s5','d_fitness'], stock:16, desc:'Mitochondrial-derived peptide associated with insulin sensitivity and metabolic balance under physical strain.'},
+ {id:'glutaglow-serum', n:'GlutaGlow Serum', t:'Advanced Skincare For A Brighter You', s:'10ml', val:59.90, p:'RM59.90', c:'Skincare Collection', imgs:['serum','d_skin2'], stock:40, desc:'Concentrated brightening facial serum formulated with high-purity glutathione and peptide complexes for a radiant, even-toned complexion.'},
+ {id:'ghk-cu-serum', n:'GHK-Cu Serum', t:'Advanced Skincare For A Brighter You', s:'30ml', val:79.90, p:'RM79.90', c:'Skincare Collection', imgs:['drop','d_skin1'], stock:35, desc:'Daily restorative copper peptide serum (30ml) designed to support skin elasticity, firmness, and barrier repair.'},
+ {id:'glutathione-cream', n:'Glutathione Cream', t:'Advanced Skincare For A Brighter You', s:'Standard', val:39.90, p:'RM39.90', c:'Skincare Collection', imgs:['cream','glow'], stock:45, desc:'Nourishing antioxidant moisture cream enriched with glutathione to lock in hydration and promote luminous skin texture.'},
+ {id:'jersey-01', n:'Premium Athletic Jersey', t:'Performance. Style. Everyday.', s:'Adult Size', val:40, p:'RM40.00', c:'Apparel', imgs:['jry1.webp', 'jry2.webp'], stock:50, sizes:['S','M','L','XL'], desc:'Official Novex Peptides merchandise. Crafted with lightweight, breathable, and moisture-wicking hexagonal weave fabric. Features premium V-neck design and durable finish.'}
+];
+
+const A = [
+ {id:'retatrutide',t:'Understanding Retatrutide',i:'dna',d:'An investigational triple-receptor agonist and what early research shows.',b:['Retatrutide is an investigational peptide designed to act on three receptors at once: GIP, GLP-1 and glucagon. This triple mechanism is what separates it from earlier single and dual agonists.','It has been studied in clinical trials run by its originator, and it is not an approved medicine. Published trial data are early and should be read with that in mind.','At Novex Peptides, retatrutide is supplied strictly as a research-grade compound for laboratory use, with third-party purity testing on every batch.']},
+ {id:'ghk-cu',t:'The Science of GHK-Cu',i:'serum',d:'A naturally occurring copper peptide and its role in skin biology research.',b:['GHK-Cu is a small tripeptide that binds copper. It occurs naturally in human plasma, and levels are reported to fall with age.','Laboratory studies have examined its effect on collagen synthesis, wound repair and skin remodelling pathways.','It is also a cosmetic ingredient, which is why it appears in our skincare range as well as in the research catalogue.']},
+ {id:'nad',t:'Benefits of NAD+',i:'sci',d:'Why this coenzyme sits at the centre of cellular energy research.',b:['NAD+ is a coenzyme found in every living cell. It carries electrons in energy metabolism and supports enzymes involved in DNA repair.','Research has reported that NAD+ levels decline with age, which is why it is a frequent subject in longevity studies.','Evidence for supplementation in humans is still developing, so our NAD+ is offered for research purposes only.']},
+ {id:'tesamorelin',t:'What is Tesamorelin',i:'fit',d:'A synthetic peptide studied for metabolic optimisation and longevity.',b:['Tesamorelin is a growth hormone-releasing factor analogue that stimulates the synthesis and release of endogenous growth hormone.','It has been extensively studied in clinical contexts for metabolic regulation and tissue health.','Novex supplies it as a research-grade material with third-party verification for laboratory investigation.']}
+];
+
+function setImgSlide(dot, targetIdx){
+  if(window.event){
+    window.event.preventDefault();
+    window.event.stopPropagation();
+  }
+  const box = dot.closest('.prod-slider');
+  if(!box) return;
+  const slides = box.querySelectorAll('.prod-slide');
+  const dots = box.querySelectorAll('.ps-dot');
+  slides.forEach((s, idx)=>s.classList.toggle('active', idx === targetIdx));
+  dots.forEach((d, idx)=>d.classList.toggle('active', idx === targetIdx));
+}
+
+let prodSlideTimer;
+function startProdAutoSlide(){
+  clearInterval(prodSlideTimer);
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  prodSlideTimer = setInterval(()=>{
+    document.querySelectorAll('.prod-slider').forEach(box=>{
+      const slides = box.querySelectorAll('.prod-slide');
+      const dots = box.querySelectorAll('.ps-dot');
+      if(slides.length < 2) return;
+      let cur = 0;
+      slides.forEach((s, idx)=>{ if(s.classList.contains('active')) cur = idx; });
+      let next = (cur + 1) % slides.length;
+      slides.forEach((s, idx)=>s.classList.toggle('active', idx === next));
+      dots.forEach((d, idx)=>d.classList.toggle('active', idx === next));
+    });
+  }, 4500);
+}
+
+let CART = JSON.parse(localStorage.getItem('nvx_cart') || '[]');
+
+function saveCart(){
+  localStorage.setItem('nvx_cart', JSON.stringify(CART));
+  updateCartBadge();
+}
+
+function updateCartBadge(){
+  const count = CART.reduce((acc,item)=>acc + item.qty, 0);
+  const badge = document.getElementById('cartCount');
+  if(badge) badge.innerText = count;
+}
+
+function openCartDrawer(){
+  renderCart();
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+}
+
+function closeCartDrawer(){
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+}
+
+function changeCartQty(index, delta){
+  if(!CART[index]) return;
+  CART[index].qty += delta;
+  if(CART[index].qty <= 0){
+    CART.splice(index, 1);
+  }
+  saveCart();
+  renderCart();
+}
+
+function removeCartItem(index){
+  if(!CART[index]) return;
+  CART.splice(index, 1);
+  saveCart();
+  renderCart();
+  showToast('Item removed from cart');
+}
+
+function renderCart(){
+  const listEl = document.getElementById('cartItemsList');
+  const totalEl = document.getElementById('cartTotal');
+  if(!listEl) return;
+
+  if(CART.length === 0){
+    listEl.innerHTML = `<div style="text-align:center;padding:48px 0;color:var(--mut)"><p style="font-size:16px;margin-bottom:8px">Your cart is empty.</p><a href="#products" onclick="closeCartDrawer()" class="btn" style="padding:8px 20px;font-size:12px">Explore Products</a></div>`;
+    totalEl.innerText = 'RM 0.00';
+    return;
+  }
+
+  let total = 0;
+  listEl.innerHTML = CART.map((item, idx)=>{
+    const subtotal = item.val * item.qty;
+    total += subtotal;
+    const detailLabel = item.size ? item.size : item.s;
+    return `
+      <div class="cart-item">
+        <div class="cart-item-img">${img(item.i, 120, item.n)}</div>
+        <div>
+          <h4 style="font-size:14px;line-height:1.25;margin-bottom:3px">${item.n}</h4>
+          <span style="font-size:12px;color:var(--mut)">${detailLabel} • RM ${item.val.toFixed(2)}</span>
+          <div style="font-size:13px;font-weight:700;color:var(--green);margin-top:4px">RM ${subtotal.toFixed(2)}</div>
+        </div>
+        <div>
+          <div class="qty-box" style="transform:scale(0.85);transform-origin:center">
+            <button onclick="changeCartQty(${idx}, -1)" aria-label="Decrease quantity">-</button>
+            <input type="text" readonly value="${item.qty}">
+            <button onclick="changeCartQty(${idx}, 1)" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+        <div>
+          <button type="button" class="cart-del-btn" onclick="removeCartItem(${idx})" aria-label="Delete ${item.n}" title="Delete item">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              <line x1="10" y1="11" x2="10" y2="17"></line>
+              <line x1="14" y1="11" x2="14" y2="17"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  totalEl.innerText = `RM ${total.toFixed(2)}`;
+}
+
+function proceedToWhatsApp(){
+  if(CART.length === 0){
+    alert('Sila tambah produk ke dalam troli terlebih dahulu.');
+    return;
+  }
+
+  let total = 0;
+  let itemsText = '';
+  CART.forEach((item, index)=>{
+    const subtotal = item.val * item.qty;
+    total += subtotal;
+    const detail = item.size ? `(${item.size})` : `(${item.s})`;
+    itemsText += `${index + 1}. *${item.n}* ${detail}\n   • Kuantiti: ${item.qty} unit/vial\n   • Harga: RM${item.val.toFixed(2)} x ${item.qty} = RM${subtotal.toFixed(2)}\n\n`;
+  });
+
+  const message = 
+`Salam sejahtera Novex Peptides, saya ingin membuat tempahan bagi item berikut:
+
+${itemsText}*Jumlah Keseluruhan (Total): RM ${total.toFixed(2)}*
+
+Sila sahkan ketersediaan stok & maklumat pembayaran / penghantaran. Terima kasih!`;
+
+  const url = `https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
+function triggerFlyAnimation(sourceImgEl){
+  const cartBtn = document.getElementById('headerCartBtn');
+  if(!sourceImgEl || !cartBtn) return;
+
+  const srcRect = sourceImgEl.getBoundingClientRect();
+  const destRect = cartBtn.getBoundingClientRect();
+
+  const imgSrc = sourceImgEl.currentSrc || sourceImgEl.src;
+  const flyer = document.createElement('img');
+  flyer.src = imgSrc;
+  flyer.className = 'flying-img';
+
+  flyer.style.position = 'fixed';
+  flyer.style.top = srcRect.top + 'px';
+  flyer.style.left = srcRect.left + 'px';
+  flyer.style.width = srcRect.width + 'px';
+  flyer.style.height = srcRect.height + 'px';
+  flyer.style.borderRadius = '24px';
+  flyer.style.opacity = '1';
+  flyer.style.transition = 'all 0.75s cubic-bezier(0.2, 0.9, 0.3, 1)';
+
+  document.body.appendChild(flyer);
+  flyer.getBoundingClientRect();
+
+  const destX = destRect.left + (destRect.width / 2) - 15;
+  const destY = destRect.top + (destRect.height / 2) - 15;
+
+  requestAnimationFrame(()=>{
+    flyer.style.top = destY + 'px';
+    flyer.style.left = destX + 'px';
+    flyer.style.width = '30px';
+    flyer.style.height = '30px';
+    flyer.style.borderRadius = '50%';
+    flyer.style.opacity = '0.3';
+    flyer.style.transform = 'scale(0.4)';
+  });
+
+  setTimeout(()=>{
+    flyer.remove();
+    cartBtn.classList.add('cart-bump');
+    setTimeout(()=>cartBtn.classList.remove('cart-bump'), 350);
+  }, 760);
+}
+
+function showToast(msg){
+  const t = document.getElementById('toastMsg');
+  if(!t) return;
+  t.innerText = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+function openSizeModal(){document.getElementById('sizeModal').classList.add('open')}
+function closeSizeModal(){document.getElementById('sizeModal').classList.remove('open')}
+
+const card = p => {
+  const slidesHtml = p.imgs.map((src, i) => {
+    const isContain = isContainImg(src);
+    return `
+      <div class="prod-slide ${i===0?'active':''} ${isContain?'contain-slide':''}">
+        <img src="${getImgUrl(src, 600)}" alt="${p.n} Slide ${i+1}" loading="lazy" ${isContain?'onload="fitRoundedImg(this)"':''} onerror="fb(this)">
+      </div>
+    `;
+  }).join('');
+
+  const dotsHtml = p.imgs.length > 1 ? `
+    <div class="ps-dots">
+      ${p.imgs.map((_, i) => `<span class="ps-dot ${i===0?'active':''}" onclick="setImgSlide(this, ${i})"></span>`).join('')}
+    </div>
+  ` : '';
+
+  return `<div class="card pc">
+    <div class="ph">
+      <div class="prod-slider">
+        <div class="prod-slides">
+          ${slidesHtml}
+        </div>
+        ${dotsHtml}
+      </div>
+      <span class="chip">${p.c}</span>
+    </div>
+    <div class="b">
+      <h3>${p.n}</h3>
+      <p class="s">${p.t}</p>
+      <div style="font-size:17px;font-weight:700;color:var(--green);margin-top:4px">${p.p}</div>
+      <div class="meta">
+        <span style="font-weight:600">${p.s}</span>
+        <span>${p.c==='Apparel'?'Merchandise':(p.c==='Skincare Collection'?'Novex Beauty':'Research grade')}</span>
+      </div>
+      <a class="btn-details" href="#product/${p.id}">See Details</a>
+    </div>
+  </div>`;
 };
 
-window.addEventListener('resize',setOff);
-window.addEventListener('orientationchange',setOff);
-window.addEventListener('hashchange',route);
+// 4 Slaid Hero Homepage
+const S = [
+  { k: 's9', h: 'Precision in<br>Every Molecule', p: 'Advanced peptide research. Science drives results, with premium quality made in USA.' },
+  { k: 'glow', h: 'Fuel a Higher<br>Standard', p: 'Science Driven Performance & Maximum Bioavailability.' },
+  { k: 'face', h: 'Radiant Skin<br>From Within', p: 'Advanced Peptide Skincare and Cellular Rejuvenation.' },
+  { k: 'dna', h: 'Innovations for<br>Longevity & Health', p: 'Third-party tested research compounds delivered with cold chain integrity.' }
+];
+
+let hi = 0, ht;
+function go(n){
+  const slides = document.querySelectorAll('.slide');
+  if(!slides.length) return;
+  hi = (n + slides.length) % slides.length;
+  slides.forEach((x,i)=>x.classList.toggle('on', i === hi));
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on', i === hi));
+}
+
+const slider = () => `
+<section class="hero sl">
+  ${S.map((s, i) => `
+    <div class="slide${i===0?' on':''}">
+      ${img(s.k, 1800, 'Hero Banner ' + (i+1))}
+      <div class="wrap">
+        <div class="in">
+          <h1>${s.h}</h1>
+          <p>${s.p}</p>
+          <div style="display:flex;align-items:center;flex-wrap:wrap">
+            <a class="btn" href="#products">Shop Now</a>
+            <a class="btn line" href="#science">Our Science</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('')}
+  <div class="ctl"><div class="wrap">
+    <div class="dots2">${S.map((_, i)=>`<button class="dot${i===0?' on':''}" onclick="go(${i})" aria-label="Slide ${i+1}"></button>`).join('')}</div>
+    <div class="arr"><button onclick="go(hi-1)" aria-label="Previous">&#8592;</button><button onclick="go(hi+1)" aria-label="Next">&#8594;</button></div>
+  </div></div>
+</section>`;
+
+const cat = (k,t,s,l) => `<a class="cat" href="${l}">${img(k,700,t)}<div><h3>${t}</h3><p>${s}</p></div></a>`;
+const hero = (k,h,p,btns='',v='',sub='') => `
+  <section class="hero ${v==='lt'?'lt':''}">
+    <img src="${getImgUrl(k,1800)}" alt="${sub||'Hero'}" onerror="fb(this)">
+    <div class="wrap"><div class="in">${sub?`<span style="font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;display:block">${sub}</span>`:''}<h1>${h}</h1><p>${p}</p>${btns}</div></div>
+  </section>`;
+
+let currentDetailQty = 1;
+let currentDetailSize = 'S';
+let currentSelectedVariant = null;
+
+function changeDetailQty(delta, maxStock){
+  const limit = currentSelectedVariant ? currentSelectedVariant.stock : maxStock;
+  currentDetailQty = Math.max(1, Math.min(limit, currentDetailQty + delta));
+  const el = document.getElementById('detailQtyInput');
+  if(el) el.value = currentDetailQty;
+}
+
+function selectProductSize(size, btnEl){
+  currentDetailSize = size;
+  document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+  btnEl.classList.add('active');
+}
+
+function selectProductVariant(prodId, idx, btnEl){
+  const prod = P.find(x => x.id === prodId);
+  if(!prod || !prod.variants) return;
+  const v = prod.variants[idx];
+  currentSelectedVariant = v;
+
+  document.querySelectorAll('.var-btn').forEach(b=>b.classList.remove('active'));
+  btnEl.classList.add('active');
+
+  const priceEl = document.getElementById('detailPriceDisplay');
+  const subEl = document.getElementById('detailSubDisplay');
+  const stockEl = document.getElementById('detailStockDisplay');
+  const hintEl = document.getElementById('varHint');
+
+  if(priceEl) priceEl.innerText = v.p;
+  if(subEl) subEl.innerText = `${prod.t} (${v.label})`;
+  if(stockEl) stockEl.innerText = `In Stock (${v.stock} units available)`;
+  if(hintEl) hintEl.style.display = 'none';
+
+  if(currentDetailQty > v.stock){
+    currentDetailQty = 1;
+    const qEl = document.getElementById('detailQtyInput');
+    if(qEl) qEl.value = 1;
+  }
+}
+
+function addToCartFromDetail(productId){
+  const prod = P.find(x=>x.id === productId);
+  if(!prod) return;
+
+  if(prod.variants && !currentSelectedVariant){
+    const hintEl = document.getElementById('varHint');
+    if(hintEl){
+      hintEl.style.display = 'block';
+      hintEl.style.color = '#e11d48';
+      hintEl.innerText = '⚠ Please select a dosage option above to see the exact price and add to cart.';
+    }
+    showToast('⚠ Please select an option first');
+    return;
+  }
+
+  let itemSize = null;
+  let itemVal = prod.val;
+  let itemSpec = prod.s;
+
+  if(prod.variants && currentSelectedVariant){
+    itemSize = `Dosage: ${currentSelectedVariant.label}`;
+    itemVal = currentSelectedVariant.val;
+    itemSpec = currentSelectedVariant.label;
+  } else if(prod.sizes){
+    itemSize = `Size: ${currentDetailSize}`;
+  }
+
+  const existing = CART.find(x => x.id === prod.id && x.size === itemSize);
+
+  if(existing){
+    existing.qty += currentDetailQty;
+  } else {
+    CART.push({
+      id: prod.id,
+      n: prod.n,
+      s: itemSpec,
+      val: itemVal,
+      i: prod.imgs[0],
+      size: itemSize,
+      qty: currentDetailQty
+    });
+  }
+
+  saveCart();
+  const mainImgEl = document.querySelector('.detail-img-wrap .prod-slide.active img') || document.querySelector('.detail-img-wrap img');
+  triggerFlyAnimation(mainImgEl);
+  showToast('✓ Added to cart');
+}
+
+const pages = {
+  home: () => `
+    ${slider()}
+    <div class="mq"><div>${[...Array(2)].map(()=>['Advanced peptide research','Science drives results','Third party tested','Cold chain from vial to door','Made in USA','Research grade only'].map(x=>`<span>${x}</span>`).join('')).join('')}</div></div>
+    <section class="sec"><div class="wrap">
+      <div class="head"><div><h2>Explore by Series</h2><p>Six specialized series engineered for weight management, cellular rejuvenation, performance, and daily care.</p></div></div>
+      <div class="g6">
+        ${cat('food','01 | Retatrutide','Weight Management','#product/retatrutide')}
+        ${cat('fit','02 | Retatrutide Plus','Dual Action Formulation','#product/reta-plus')}
+        ${cat('face','03 | Skincare Peptides','Cellular Rejuvenation','#products')}
+        ${cat('run','04 | Performance','Longevity & Power','#products')}
+        ${cat('serum','05 | Novex Skincare','Serums & Cream','#products')}
+        ${cat('jersey','06 | Athletic Apparel','Performance Jersey','#product/jersey-01')}
+      </div>
+    </div></section>
+
+    <!-- Bahagian Testimony Landscape -->
+    <section class="sec alt" id="testimonies"><div class="wrap">
+      <div class="head">
+        <div>
+          <h2>Real Transformations, Proven Results</h2>
+          <p>Explore real transformation journeys from our community. Interested in achieving similar results? Explore our research formulations below.</p>
+        </div>
+      </div>
+      <div class="t-grid">
+        ${T.map((item, idx) => `
+          <article class="t-card">
+            <div class="t-frame" onclick="openTestimonyModal('${item.img}')">
+              <img src="${item.img}" alt="Transformation ${idx+1} - ${item.title}" loading="lazy" onerror="fb(this)">
+            </div>
+            <div class="t-foot">
+              <h3>${item.title}</h3>
+              <p>${item.sub}</p>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+      <div style="text-align:center;margin-top:40px">
+        <a class="btn" href="#products" style="padding:14px 40px;font-size:14px;font-weight:600">Shop Now</a>
+      </div>
+    </div></section>
+
+    <section class="sec"><div class="wrap">
+      <div class="head"><div><h2>Featured Formulations</h2></div><a class="btn line" href="#products">View all</a></div>
+      <div class="g4">${[P[0], P[1], P[9], P[12]].map(card).join('')}</div>
+    </div></section>
+    
+    <!-- Bahagian 2 Banner Asal -->
+    <section class="sec" style="padding-top:0"><div class="wrap div2">
+      <div class="camp">
+        ${img('fit',1000,'Performance Peptides')}
+        <div>
+          <h2>Fuel a Higher Standard</h2>
+          <p>Science Driven Performance</p>
+          <a class="btn" style="background:#FFFFFF;color:var(--green)" href="#products">Explore peptides</a>
+        </div>
+      </div>
+      <div class="camp">
+        ${img('glow',1000,'Skincare Peptides')}
+        <div>
+          <h2>Radiant Skin From Within</h2>
+          <p>Advanced Peptide Skincare</p>
+          <a class="btn" style="background:#FFFFFF;color:var(--green)" href="#products">Explore skincare</a>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="sec alt"><div class="wrap">
+      <div class="head"><div><h2>From the bench to your door</h2><p>Four checkpoints every vial passes before it leaves us.</p></div></div>
+      <div class="steps">
+        <div><b>01</b><h3>Synthesis</h3><p>Produced under certified partner cGMP conditions in the USA.</p></div>
+        <div><b>02</b><h3>Testing</h3><p>Third-party testing verifies purity and compound identity via HPLC.</p></div>
+        <div><b>03</b><h3>Cold Storage</h3><p>Stored under continuous temperature-monitored environments.</p></div>
+        <div><b>04</b><h3>Insulated Dispatch</h3><p>Express courier cold-chain dispatch directly to your institution.</p></div>
+      </div>
+    </div></section>
+    <section class="sec"><div class="wrap">
+      <div class="head"><div><h2>Latest Science Articles</h2></div><a class="btn line" href="#resources">All articles</a></div>
+      <div class="g4 art">${A.map(a=>`<a class="card" href="#resources/${a.id}" style="background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column"><div class="ph" style="aspect-ratio:16/10;border-radius:0">${img(a.i,500,a.t)}</div><div class="b" style="padding:18px"><h3 style="font-size:20px">${a.t}</h3></div></a>`).join('')}</div>
+    </div></section>
+  `,
+
+  products: () => `
+    <section class="sec" id="cat"><div class="wrap">
+      <div class="head"><div><h1 style="font-size:clamp(36px,5vw,60px)">Shop Catalog</h1><p>Select any product to view its batch specifications, dosage options, stock availability, and full profile.</p></div></div>
+      <input id="q" class="sq" type="search" placeholder="Search products, serums or apparel" style="display:block;width:100%;max-width:360px;padding:11px 16px;border:1px solid var(--line);background:var(--card);border-radius:999px;margin-bottom:16px">
+      <div class="filter" id="flt">${['All','Weight Management','Skincare Peptides','Skincare Collection','Performance','Apparel'].map((f,i)=>`<button class="${i?'':'on'}" data-f="${f}">${f}</button>`).join('')}</div>
+      <div class="g4" id="pg">${P.map(card).join('')}</div>
+      <p style="font-size:12px;color:var(--mut);border-top:1px solid var(--line);margin-top:28px;padding-top:14px">Research chemicals are sold for in-vitro and laboratory research use only. Topical serums, creams, and merchandise items are formulated for daily cosmetic and athletic use.</p>
+    </div></section>
+  `,
+
+  product: (id) => {
+    const p = P.find(x => x.id === id) || P[0];
+    currentDetailQty = 1;
+    currentDetailSize = 'S';
+    currentSelectedVariant = null;
+    const isApparel = p.c === 'Apparel';
+    const hasVariants = Array.isArray(p.variants) && p.variants.length > 0;
+
+    const variantSelectionBlock = hasVariants ? `
+      <div style="margin-top:6px;background:var(--card);padding:16px;border-radius:18px;border:1px solid var(--line)">
+        <label style="font-size:12px;font-weight:700;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:6px">Select Vial Concentration / Dosage:</label>
+        <div class="size-picker">
+          ${p.variants.map((v, idx)=>`<button type="button" class="size-btn var-btn" onclick="selectProductVariant('${p.id}', ${idx}, this)">${v.label}</button>`).join('')}
+        </div>
+        <small id="varHint" style="font-size:12px;color:var(--mut);display:block;margin-top:4px">Select a dosage above to display the exact price.</small>
+      </div>
+    ` : '';
+
+    const sizeSelectionBlock = isApparel ? `
+      <div style="margin-top:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <label style="font-size:12px;font-weight:600;text-transform:uppercase;color:var(--mut)">Select Size:</label>
+          <a class="chart-link" onclick="openSizeModal()">View Size Chart</a>
+        </div>
+        <div class="size-picker">
+          ${p.sizes.map((sz,idx)=>`<button type="button" class="size-btn ${idx===0?'active':''}" onclick="selectProductSize('${sz}', this)">${sz}</button>`).join('')}
+        </div>
+      </div>
+    ` : '';
+
+    const detailSlidesHtml = p.imgs.map((src, i) => {
+      const isContain = isContainImg(src);
+      return `
+        <div class="prod-slide ${i===0?'active':''} ${isContain?'contain-slide':''}">
+          <img src="${getImgUrl(src, 1000)}" alt="${p.n} Slide ${i+1}" ${isContain?'onload="fitRoundedImg(this)"':''} onerror="fb(this)">
+        </div>
+      `;
+    }).join('');
+
+    const detailDotsHtml = p.imgs.length > 1 ? `
+      <div class="ps-dots">
+        ${p.imgs.map((_, i) => `<span class="ps-dot ${i===0?'active':''}" onclick="setImgSlide(this, ${i})"></span>`).join('')}
+      </div>
+    ` : '';
+
+    return `
+      <section class="sec"><div class="wrap">
+        <div style="margin-bottom:24px">
+          <a href="#products" style="font-size:13px;font-weight:600;color:var(--green)">← Back to Catalog</a>
+        </div>
+        <div class="detail-grid">
+          <div class="detail-img-wrap prod-slider">
+            <div class="prod-slides">
+              ${detailSlidesHtml}
+            </div>
+            ${detailDotsHtml}
+          </div>
+          <div class="detail-info">
+            <span class="detail-badge">${p.c}</span>
+            <h1 style="font-size: clamp(28px, 4vw, 44px);">${p.n}</h1>
+            <p id="detailSubDisplay" style="color:var(--mut);font-size:16px">${p.t} (${p.s})</p>
+            <div id="detailPriceDisplay" class="detail-price">${p.p}</div>
+            
+            <div id="detailStockDisplay" class="stock-badge">In Stock (${p.stock} units available)</div>
+
+            ${variantSelectionBlock}
+            ${sizeSelectionBlock}
+
+            <div class="detail-desc">
+              <h4 style="font-family:var(--serif);font-size:20px;margin-bottom:8px">Product Overview</h4>
+              <p>${p.desc}</p>
+            </div>
+
+            <div class="qty-row">
+              <div class="qty-box">
+                <button type="button" onclick="changeDetailQty(-1, ${p.stock})">-</button>
+                <input type="text" id="detailQtyInput" readonly value="1">
+                <button type="button" onclick="changeDetailQty(1, ${p.stock})">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCartFromDetail('${p.id}')">Add to Cart</button>
+            </div>
+
+            <div style="margin-top:18px;font-size:12px;color:var(--mut);line-height:1.6;border-top:1px solid var(--line);padding-top:14px">
+              • High purity formulation verified with third-party quality control.<br>
+              • Secure thermal-insulated packaging for all temperature-sensitive items.<br>
+              • Direct WhatsApp support available for wholesale or technical inquiries.
+            </div>
+          </div>
+        </div>
+      </div></section>
+    `;
+  },
+
+  about: () => `
+    ${hero('lab1','One question behind every vial','Is it really what the label says? Novex was built to answer that clearly, with paper to back it up.','','bot','Our story')}
+    <section class="sec"><div class="wrap g2">
+      <div class="ph w">${img('lab2',1000,'Laboratory Research')}</div>
+      <div>
+        <h2>Why Novex exists</h2>
+        <p style="margin-top:18px;color:#3A4D5E">Researchers buying peptides online kept running into the same problem: a certificate that could not be matched to the vial in their hand. We started Novex as a sourcing desk that treats the batch number as the centre of everything.</p>
+        <p style="margin-top:14px;color:#3A4D5E">If we cannot test it, trace it and explain it in plain language, it does not go into our catalog.</p>
+      </div>
+    </div></section>
+    <section class="sec alt"><div class="wrap">
+      <div class="head"><div><h2>How we work</h2><p>Four habits that shape what we stock and how we ship it.</p></div></div>
+      <div class="rows">
+        <div><b>01</b><h3>Source narrowly</h3><p>Each compound addition needs published literature and a supplier we can audit.</p></div>
+        <div><b>02</b><h3>Test outside</h3><p>Purity results come from a third-party laboratory and are tied to the lot printed on your vial.</p></div>
+        <div><b>03</b><h3>Keep it cold</h3><p>Storage and shipping are designed around temperature stability, using insulated packaging.</p></div>
+        <div><b>04</b><h3>Explain plainly</h3><p>Clear, direct communication regarding purity, research focus, and handling protocols.</p></div>
+      </div>
+    </div></section>
+    <section class="sec" style="background:var(--bg2)"><div class="wrap"><p class="pull">“A good certificate is one you can match to the vial in your hand.”<small>THE NOVEX PRINCIPLE</small></p></div></section>
+  `,
+
+  science: () => `
+    ${hero('dna','Science today.<br>A healthier tomorrow.','Plain-language notes on the compounds we supply and the tests that stand behind them.','','rgt','The lab notebook')}
+    <section class="sec alt"><div class="wrap">
+      <div class="head"><div><h2>How a batch is tested</h2><p>Three questions, three methods. Together they tell a researcher what is actually in the vial.</p></div></div>
+      <div class="rows">
+        <div><b>I</b><h3>Identity</h3><p>Mass spectrometry confirms the molecular weight matches the intended peptide.</p></div>
+        <div><b>II</b><h3>Purity</h3><p>HPLC separates the sample into its components and reports target peptide purity percentage.</p></div>
+        <div><b>III</b><h3>Content</h3><p>Quantity testing checks that the amount stated on the label matches what the sealed vial holds.</p></div>
+      </div>
+    </div></section>
+    <section class="sec"><div class="wrap">
+      <div class="head"><div><h2>Scientific Glossary</h2></div></div>
+      <div class="gl">
+        <div><b>Lyophilised</b><p>Freeze-dried into a stable powder, which keeps a peptide intact far longer than a liquid.</p></div>
+        <div><b>HPLC</b><p>High-performance liquid chromatography, the standard method for measuring peptide purity.</p></div>
+        <div><b>Agonist</b><p>A molecule that activates a receptor. Retatrutide, for example, is studied at three of them.</p></div>
+        <div><b>cGMP</b><p>Current good manufacturing practice, a framework for consistent, documented production.</p></div>
+        <div><b>COA</b><p>Certificate of analysis, the report that lists test results for one specific lot.</p></div>
+        <div><b>Cold chain</b><p>An unbroken run of controlled temperatures from storage to the customer’s door.</p></div>
+      </div>
+    </div></section>
+  `,
+
+  resources: (arg) => {
+    const a = A.find(x => x.id === arg);
+    if(a){
+      return `
+        ${hero(a.i, a.t, a.d, '<a class="btn line" href="#resources">All articles</a>', 'bot', 'Research note')}
+        <section class="sec"><div class="wrap"><div class="g2" style="align-items:start">
+          <div class="ph w">${img(a.i, 1000, a.t)}</div>
+          <div>${a.b.map(x=>`<p style="margin-bottom:16px;color:#3A4D5E">${x}</p>`).join('')}<p style="font-size:12px;color:var(--mut);border-top:1px solid var(--line);padding-top:12px;margin-top:20px">Educational content for research context only. It is not medical advice.</p></div>
+        </div></div></section>
+      `;
+    }
+    return `
+      ${hero('sci','Read before you research','Short, careful articles on the compounds in our catalogue, written to explain rather than to sell.','','bot','Resources')}
+      <section class="sec"><div class="wrap">
+        <div class="head"><div><h2>Latest articles</h2><p>Each piece separates what is established from what is still being studied.</p></div></div>
+        <div class="g2">${A.map(art=>`<a class="card" href="#resources/${art.id}" style="background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column"><div class="ph" style="aspect-ratio:16/10;border-radius:0">${img(art.i,800,art.t)}</div><div style="padding:22px"><h3 style="font-size:24px;margin-bottom:8px">${art.t}</h3><p style="font-size:14px;color:var(--mut)">${art.d}</p></div></a>`).join('')}</div>
+      </div></section>
+    `;
+  },
+
+  contact: () => `
+    ${hero('ship','Talk to the people who pack the box','Questions on a lot number, a delivery window or merchandise sizing? We answer them directly.','','','Contact')}
+    <section class="sec"><div class="wrap">
+      <div class="c-grid">
+        <div>
+          <div class="c-wa-box">
+            <span style="font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#8CC2E8;display:block;margin-bottom:6px">Priority Channel</span>
+            <h3>Direct WhatsApp Concierge</h3>
+            <p>For immediate product availability, jersey sizing, wholesale enquiries, or real-time tracking, speak directly with our team.</p>
+            <a class="btn" style="background:#25D366;color:#fff" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi Novex Peptides, I have an inquiry.')}" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+          <div class="c-specs">
+            <div class="c-spec"><small>Logistics</small><h4>Cold-Chain Dispatch</h4><p>Insulated thermal packaging shipped to preserve molecular stability.</p></div>
+            <div class="c-spec"><small>Verification</small><h4>Batch COA Lookup</h4><p>Request HPLC &amp; Mass Spectrometry purity reports tied to your lot number.</p></div>
+          </div>
+        </div>
+        <div class="c-form-wrap">
+          <h2 style="font-size:32px;margin-bottom:8px">Send an Enquiry</h2>
+          <p style="color:var(--mut);font-size:14px;margin-bottom:20px">Complete the form below and our team will respond shortly.</p>
+          <form class="form" onsubmit="event.preventDefault();this.innerHTML='<div style=\'padding:36px 20px;text-align:center;background:var(--bg2);border-radius:18px\'><h3 style=\'margin-bottom:8px;color:var(--green)\'>Enquiry Received</h3><p style=\'color:var(--mut);font-size:14px\'>Thank you for contacting Novex Peptides. We will respond within one business day.</p></div>'">
+            <div class="f-row"><div class="f-grp"><label>Full Name</label><input required placeholder="Your Name"></div><div class="f-grp"><label>Email Address</label><input type="email" required placeholder="name@email.com"></div></div>
+            <div class="f-grp"><label>Message</label><textarea rows="4" required placeholder="How can we assist your research or order today?"></textarea></div>
+            <button class="btn" style="width:100%">Submit Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </div></section>
+  `
+};
+
+function initContainImages(){
+  document.querySelectorAll('.contain-slide img').forEach(el => {
+    if(el.complete) fitRoundedImg(el);
+  });
+}
+
+function route(){
+  const hash = location.hash.slice(1) || 'home';
+  const [p, arg] = hash.split('/');
+  const k = pages[p] ? p : 'home';
+  
+  const appEl = document.getElementById('app');
+  if(appEl) appEl.innerHTML = pages[k](arg);
+
+  setOff();
+  updateCartBadge();
+  startProdAutoSlide();
+  initContainImages();
+
+  const lk = a => a.map(m => `<a href="#${m.toLowerCase()}" class="${m.toLowerCase()===k?'on':''}">${m}</a>`).join('');
+  document.getElementById('navL').innerHTML = lk(menu.slice(0, 4));
+  document.getElementById('navR').innerHTML = lk(menu.slice(4));
+  document.getElementById('navM').innerHTML = lk(menu);
+  document.getElementById('navM').classList.remove('open');
+  window.scrollTo(0, 0);
+
+  const f = document.getElementById('flt'), q = document.getElementById('q');
+  const show = () => {
+    const b = f.querySelector('.on').dataset.f, t = q.value.trim().toLowerCase();
+    const r = P.filter(x => (b==='All' || x.c===b) && (x.n + x.t + x.c + x.s).toLowerCase().includes(t));
+    document.getElementById('pg').innerHTML = r.length ? r.map(card).join('') : '<p style="color:var(--mut);padding:20px 0">No products match your search.</p>';
+    initContainImages();
+  };
+
+  if(f && q){
+    f.onclick = e => {
+      const b = e.target.closest('button');
+      if(!b) return;
+      f.querySelectorAll('button').forEach(x => x.classList.toggle('on', x===b));
+      show();
+    };
+    q.oninput = show;
+  }
+
+  clearInterval(ht);
+  hi = 0;
+  if(document.querySelector('.slide') && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+    ht = setInterval(()=>go(hi+1), 7000);
+  }
+}
+
+const setOff = () => {
+  const topEl = document.querySelector('.top');
+  const hdrEl = document.querySelector('header');
+  const h = (topEl ? topEl.offsetHeight : 0) + (hdrEl ? hdrEl.offsetHeight : 0);
+  document.documentElement.style.setProperty('--off', h + 'px');
+};
+
+window.addEventListener('resize', setOff);
+window.addEventListener('hashchange', route);
+
 route();
+updateCartBadge();
 </script>
 </body>
 </html>
